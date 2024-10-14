@@ -14,6 +14,7 @@
 # define PUSH_SWAP_H
 
 # include "libft/libft.h"
+# include <stdio.h>
 
 // Declarations from ps_utils.c
 void	error_exit(const char *msg);
@@ -23,6 +24,5 @@ void	rotate(char **stack);
 void	rotate_reverse(char **stack);
 void	push(char ***stack1, char ***stack2);
 void	free_stack(char **stack);
-int		main(void);
 
 #endif
