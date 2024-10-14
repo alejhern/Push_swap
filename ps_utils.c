@@ -10,11 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "push_swap.h"
+#include "push_swap.h"
 
 void	error_exit(const char *msg)
 {
-	perror(msg);
+	ft_printf("%s", msg);
 	exit(EXIT_FAILURE);
 }
-
