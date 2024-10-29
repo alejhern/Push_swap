@@ -68,6 +68,29 @@ static int get_max_bits(int max, int min)
     return (bits);
 }
 
+static int is_sorted(char **stack, size_t size)
+{
+    int i;
+    long prev;
+    long current;
+
+    if (!stack || !stack[0])
+        return (1);
+    if (size !=  ft_stacklen(stack))
+        return (0);
+    i = 0;
+    prev = ft_atoi(stack[0]);
+    while (stack[i])
+    {
+        current = ft_atoi(stack[i]);
+        if (current < prev)
+            return (0);
+        prev = current;
+        i++;
+    }
+    return (1);
+}
+
 void radix_sort(char ***stack_a, char ***stack_b)
 {
     int min;
@@ -80,7 +103,7 @@ void radix_sort(char ***stack_a, char ***stack_b)
     min = find_min_value(*stack_a);
     size = ft_stacklen(*stack_a);
     bit = 0;
-    while (bit < get_max_bits(find_max_value(*stack_a), min))
+    while (bit < get_max_bits(find_max_value(*stack_a), min) && !is_sorted(*stack_a, size))
     {
         i = 0;
         while (i < size)
