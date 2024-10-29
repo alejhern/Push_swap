@@ -18,6 +18,11 @@
 
 // Declarations from ps_utils.c
 void	error_exit(const char *msg);
+size_t  ft_stacklen(char **stack);
+void    ft_stackfree(char **stack);
+
+// Declarations fron ps_logic.c
+void    radix_sort(char ***stack_a, char ***stack_b);
 // Declarations from ps_moves.c
 void	swap(char **stack);
 void	rotate(char **stack);

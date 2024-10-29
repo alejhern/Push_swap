@@ -12,18 +12,6 @@
 
 #include "push_swap.h"
 
-static size_t	ft_stacklen(char **stack)
-{
-	size_t	len;
-
-	len = 0;
-	if (!stack)
-		return (len);
-	while (stack[len])
-		len++;
-	return (len);
-}
-
 void	swap(char **stack)
 {
 	char	*temp;

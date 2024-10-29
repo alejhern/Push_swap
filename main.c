@@ -12,19 +12,6 @@
 
 #include "push_swap.h"
 
-void	free_stack(char **stack)
-{
-	size_t	index;
-
-	if (stack)
-	{
-		index = 0;
-		while (stack[index])
-			free(stack[index]);
-		free(stack);
-	}
-}
-
 static void	ft_call_function(char *line, char ***stack_a, char ***stack_b)
 {
 	if (ft_memcmp(line, "sa\n", 3) == 0)
@@ -106,11 +93,17 @@ int	main(int argc, char **argv)
 
 	if (argc < 3)
 		error_exit("You have to pass more than 2 argmunts;");
+	stack_b = NULL;
 	stack_a = build_stack(argc, argv);
 	print_stack(stack_a, 'A');
+	radix_sort(&stack_a, &stack_b);
+	print_stack(stack_a, 'A');
+	free_stack(stack_a);
+	if (stack_b)
+		free_stack(stack_b);
+	return(0);
 	ft_printf("move: ");
 	line = get_next_line(0);
-	stack_b = NULL;
 	while (line)
 	{
 		ft_call_function(line, &stack_a, &stack_b);
