@@ -15,36 +15,27 @@
 static void	ft_call_function(char *line, char ***stack_a, char ***stack_b)
 {
 	if (ft_memcmp(line, "sa\n", 3) == 0)
-		swap(*stack_a);
+		sa(stack_a, 0);
 	if (ft_memcmp(line, "sb\n", 3) == 0)
-		swap(*stack_b);
+		sb(stack_b, 0);
 	if (ft_memcmp(line, "ss\n", 3) == 0)
-	{
-		swap(*stack_a);
-		swap(*stack_b);
-	}
+		ss(stack_a, stack_b, 0);
 	if (ft_memcmp(line, "pa\n", 3) == 0)
-		push(stack_a, stack_b);
+		pa(stack_a, stack_b, 0);
 	if (ft_memcmp(line, "pb\n", 3) == 0)
-		push(stack_b, stack_a);
+		pb(stack_b, stack_a, 0);
 	if (ft_memcmp(line, "ra\n", 3) == 0)
-		rotate(*stack_a);
+		ra(stack_a, 0);
 	if (ft_memcmp(line, "rb\n", 3) == 0)
-		rotate(*stack_b);
+		rb(stack_b, 0);
 	if (ft_memcmp(line, "rr\n", 3) == 0)
-	{
-		rotate(*stack_a);
-		rotate(*stack_b);
-	}
+		rr(stack_a, stack_b, 0);
 	if (ft_memcmp(line, "rra\n", 4) == 0)
-		rotate_reverse(*stack_a);
+		rra(stack_a, 0);
 	if (ft_memcmp(line, "rrb\n", 4) == 0)
-		rotate_reverse(*stack_b);
+		rrb(stack_b, 0);
 	if (ft_memcmp(line, "rrr\n", 4) == 0)
-	{
-		rotate_reverse(*stack_a);
-		rotate_reverse(*stack_b);
-	}
+		rrr(stack_a, stack_b, 0);
 }
 
 static char	**build_stack(int argc, char **argv)
