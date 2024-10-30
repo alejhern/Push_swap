@@ -15,27 +15,27 @@
 static void	ft_call_function(char *line, char ***stack_a, char ***stack_b)
 {
 	if (ft_memcmp(line, "sa\n", 3) == 0)
-		sa(stack_a, 0);
+		sa(stack_a, -1);
 	if (ft_memcmp(line, "sb\n", 3) == 0)
-		sb(stack_b, 0);
+		sb(stack_b, -1);
 	if (ft_memcmp(line, "ss\n", 3) == 0)
-		ss(stack_a, stack_b, 0);
+		ss(stack_a, stack_b, -1);
 	if (ft_memcmp(line, "pa\n", 3) == 0)
-		pa(stack_a, stack_b, 0);
+		pa(stack_a, stack_b, -1);
 	if (ft_memcmp(line, "pb\n", 3) == 0)
-		pb(stack_b, stack_a, 0);
+		pb(stack_b, stack_a, -1);
 	if (ft_memcmp(line, "ra\n", 3) == 0)
-		ra(stack_a, 0);
+		ra(stack_a, -1);
 	if (ft_memcmp(line, "rb\n", 3) == 0)
-		rb(stack_b, 0);
+		rb(stack_b, -1);
 	if (ft_memcmp(line, "rr\n", 3) == 0)
-		rr(stack_a, stack_b, 0);
+		rr(stack_a, stack_b, -1);
 	if (ft_memcmp(line, "rra\n", 4) == 0)
-		rra(stack_a, 0);
+		rra(stack_a, -1);
 	if (ft_memcmp(line, "rrb\n", 4) == 0)
-		rrb(stack_b, 0);
+		rrb(stack_b, -1);
 	if (ft_memcmp(line, "rrr\n", 4) == 0)
-		rrr(stack_a, stack_b, 0);
+		rrr(stack_a, stack_b, -1);
 }
 
 static void	check_stack(char **stack)
