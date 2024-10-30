@@ -38,6 +38,32 @@ static void	ft_call_function(char *line, char ***stack_a, char ***stack_b)
 		rrr(stack_a, stack_b, 0);
 }
 
+static void	check_stack(char **stack)
+{
+	int i;
+	int j;
+	long current;
+
+	if (!stack || !stack[0])
+		return ;
+	i = 0;
+	while (stack[i])
+	{
+		current = ft_atoi(stack[i]);
+		j = i + 1;
+		while (stack[j])
+		{
+			if (current == ft_atoi(stack[j]))
+			{
+				free_stack(stack);
+				error_exit("Error: Duplicated values in the stack.\n");
+			}
+			j++;
+		}
+		i++;
+	}
+}
+
 static char	**build_stack(int argc, char **argv)
 {
 	char	**stack;
@@ -58,6 +84,7 @@ static char	**build_stack(int argc, char **argv)
 		index++;
 	}
 	stack[index] = NULL;
+	check_stack(stack);
 	return (stack);
 }
 
