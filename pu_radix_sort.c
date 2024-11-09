@@ -68,6 +68,54 @@ static int get_max_bits(int max, int min)
     return (bits);
 }
 
+void simple_sort(char ***stack, int *move_count)
+{
+    if (ft_stacklen(*stack) <= 1)
+        return;
+
+    if (ft_stacklen(*stack) == 2) {
+        if (ft_atoi((*stack)[0]) > ft_atoi((*stack)[1]))
+            sa(stack, 1);
+            (*move_count)++;
+        return;
+    }
+
+    // Para 3 elementos
+    int first = ft_atoi((*stack)[0]);
+    int second = ft_atoi((*stack)[1]);
+    int third = ft_atoi((*stack)[2]);
+
+    if (first > second && first < third)
+    {
+        sa(stack, 1);
+        (*move_count)++;
+    }
+    else if (first > second && second > third)
+    {
+        sa(stack, 1);
+        (*move_count)++;
+        rra(stack, 1);
+        (*move_count)++;
+    }
+    else if (first > third && second < third)
+    {
+        ra(stack, 1);
+        (*move_count)++;
+    }
+    else if (first < second && first > third)
+    {
+        rra(stack, 1);
+        (*move_count)++;
+    }
+    else if (first < third && second > third)
+    {
+        sa(stack, 1);
+        (*move_count)++;
+        ra(stack, 1);
+        (*move_count)++;
+    }
+}
+
 static int is_sorted(char **stack, size_t size)
 {
     int i;
@@ -105,7 +153,10 @@ void radix_sort(char ***stack_a, char ***stack_b)
     bit = 0;
     while (bit < get_max_bits(find_max_value(*stack_a), min) && !is_sorted(*stack_a, size))
     {
-        i = 0;
+        i = 2;
+        simple_sort(stack_a, &move_count);
+        if (is_sorted(*stack_a, size))
+            break;
         while (i < size)
         {
             num = ft_atoi((*stack_a)[0]) - min;
