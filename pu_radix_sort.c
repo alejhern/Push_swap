@@ -143,12 +143,11 @@ void radix_sort(char ***stack_a, char ***stack_b)
     min = find_min_value(*stack_a);
     size = ft_stacklen(*stack_a);
     bit = 0;
+    if (size <= 3)
+        simple_sort(stack_a, &move_count);
     while (bit < get_max_bits(find_max_value(*stack_a), min) && !is_sorted(*stack_a, size))
     {
         i = 0;
-        simple_sort(stack_a, &move_count);
-        if (is_sorted(*stack_a, size))
-            break;
         while (i < size)
         {
             num = ft_atoi((*stack_a)[0]) - min;
@@ -161,7 +160,7 @@ void radix_sort(char ***stack_a, char ***stack_b)
         }
         while (*stack_b && (*stack_b)[0])
         {
-            pa(stack_a, stack_b,  1);
+            pa(stack_a, stack_b, 1);
             move_count++; // Incrementar el contador de movimientos
         }
         bit++;

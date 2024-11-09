@@ -58,15 +58,13 @@ void	push(char ***stack1, char ***stack2)
 	if (!stack1 || !len_st2)
 		return ;
 	len_st1 = ft_stacklen(*stack1);
-	*stack1 = (char **)ft_realloc(*stack1, (len_st1 + 2) * sizeof(char *));
-	if (!(*stack1))
-		error_exit("Error: Failed to allocate memory with malloc.\n");
+	*stack1 = realloc(*stack1, (len_st1 + 2) * sizeof(char *));
+	if (!*stack1)
+		error_exit("Error: Failed to reallocate memory with realloc.\n");
 	(*stack1)[len_st1] = (*stack2)[0];
 	(*stack1)[len_st1 + 1] = NULL;
 	rotate_reverse(*stack1);
 	rotate(*stack2);
-	*stack2 = (char **)ft_realloc(*stack2, len_st2 * sizeof(char *));
-	if (!(*stack2))
-		error_exit("Error: Failed to allocate memory with malloc.\n");
+	len_st2 = ft_stacklen(*stack2);
 	(*stack2)[len_st2 - 1] = NULL;
 }
