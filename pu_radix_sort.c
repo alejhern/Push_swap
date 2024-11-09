@@ -6,7 +6,7 @@
 /*   By: amhernandez <alejhern@student.42.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 21:20:03 by amhernandez       #+#    #+#             */
-/*   Updated: 2024/11/07 22:09:27 by alejhern         ###   ########.fr       */
+/*   Updated: 2024/11/09 18:19:37 by alejhern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,7 +145,7 @@ void radix_sort(char ***stack_a, char ***stack_b)
     bit = 0;
     while (bit < get_max_bits(find_max_value(*stack_a), min) && !is_sorted(*stack_a, size))
     {
-        i = 2;
+        i = 0;
         simple_sort(stack_a, &move_count);
         if (is_sorted(*stack_a, size))
             break;
