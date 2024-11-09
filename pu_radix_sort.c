@@ -74,9 +74,10 @@ void simple_sort(char ***stack, int *move_count)
         return;
 
     if (ft_stacklen(*stack) == 2) {
-        if (ft_atoi((*stack)[0]) > ft_atoi((*stack)[1]))
+        if (ft_atoi((*stack)[0]) > ft_atoi((*stack)[1])) {
             sa(stack, 1);
             (*move_count)++;
+        }
         return;
     }
 
@@ -85,30 +86,21 @@ void simple_sort(char ***stack, int *move_count)
     int second = ft_atoi((*stack)[1]);
     int third = ft_atoi((*stack)[2]);
 
-    if (first > second && first < third)
-    {
+    if (first > second && first < third) {
         sa(stack, 1);
         (*move_count)++;
-    }
-    else if (first > second && second > third)
-    {
+    } else if (first > second && second > third) {
         sa(stack, 1);
         (*move_count)++;
         rra(stack, 1);
         (*move_count)++;
-    }
-    else if (first > third && second < third)
-    {
+    } else if (first > third && second < third) {
         ra(stack, 1);
         (*move_count)++;
-    }
-    else if (first < second && first > third)
-    {
+    } else if (first < second && first > third) {
         rra(stack, 1);
         (*move_count)++;
-    }
-    else if (first < third && second > third)
-    {
+    } else if (first < third && second > third) {
         sa(stack, 1);
         (*move_count)++;
         ra(stack, 1);
