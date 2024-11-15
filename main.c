@@ -103,9 +103,6 @@ static void	print_stack(char **stack, char letter)
 	}
 }
 
-#include "libft.h"      // Asegúrate de tener la biblioteca adecuada para `ft_printf` y `get_next_line`.
-#include "push_swap.h"  // Incluye aquí el archivo de cabecera con la definición de `t_stacks` y funciones auxiliares.
-
 int main(int argc, char **argv) {
     t_stacks stacks;
     char *line;
