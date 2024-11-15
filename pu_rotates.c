@@ -12,21 +12,30 @@
 
 #include "push_swap.h"
 
-void    ra(char ***stack_a, int fd)
-{
-    rotate(*stack_a);
-    ft_putendl_fd("ra", fd);
+void ra(t_stacks *stacks, int fd) {
+    if (rotate(stacks->stack_a)) {
+        stacks->move_count++;
+        ft_putendl_fd("ra", fd);
+    }
 }
 
-void    rb(char ***stack_b, int fd)
-{
-    rotate(*stack_b);
-    ft_putendl_fd("rb", fd);
+void rb(t_stacks *stacks, int fd) {
+    if (rotate(stacks->stack_b)) {
+        stacks->move_count++;
+        ft_putendl_fd("rb", fd);
+    }
 }
 
-void    rr(char ***stack_a, char ***stack_b, int fd)
+void rr(t_stacks *stacks, int fd)
 {
-    rotate(*stack_a);
-    rotate(*stack_b);
-    ft_putendl_fd("rr", fd);
+    int moved_a;
+    int moved_b;
+
+    moved_a = rotate(stacks->stack_a);
+    moved_b = rotate(stacks->stack_b);
+    if (moved_a || moved_b)
+    {
+        stacks->move_count++;
+        ft_putendl_fd("rr", fd);
+    }
 }

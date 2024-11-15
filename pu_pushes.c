@@ -12,14 +12,42 @@
 
 #include "push_swap.h"
 
-void    pa(char ***stack_a, char ***stack_b, int fd)
-{
-    push(stack_a, stack_b);
-    ft_putendl_fd("pa", fd);
+// Función que realiza el push de `stack_b` a `stack_a`
+void pa(t_stacks *stacks, int fd) {
+    int result;
+
+    result = push(&(stacks->stack_a), &(stacks->stack_b)); // Movimiento de `stack_b` a `stack_a`
+    if (result == 1)
+    {
+        stacks->size_a++;
+        stacks->size_b--;
+        stacks->move_count++;
+        ft_putendl_fd("pa", fd);
+    }
+    else if (result == -1)
+    {
+        free_stack(stacks->stack_a);
+        free_stack(stacks->stack_b);
+        error_exit("Error: Failed to reallocate memory with realloc.\n");
+    }
 }
 
-void    pb(char ***stack_b, char ***stack_a, int fd)
-{
-    push(stack_b, stack_a);
-    ft_putendl_fd("pb", fd);
+// Función que realiza el push de `stack_a` a `stack_b`
+void pb(t_stacks *stacks, int fd) {
+    int result;
+
+    result = push(&(stacks->stack_b), &(stacks->stack_a)); // Movimiento de `stack_a` a `stack_b`
+    if (result == 1)
+    {
+        stacks->size_b++;
+        stacks->size_a--;
+        stacks->move_count++;
+        ft_putendl_fd("pb", fd);
+    }
+    else if (result == -1)
+    {
+        free_stack(stacks->stack_a);
+        free_stack(stacks->stack_b);
+        error_exit("Error: Failed to reallocate memory with realloc.\n");
+    }
 }
