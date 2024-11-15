@@ -12,30 +12,30 @@
 
 #include "push_swap.h"
 
-static void	ft_call_function(char *line, char ***stack_a, char ***stack_b)
+static void	ft_call_function(char *line, t_stacks *stacks)
 {
 	if (ft_memcmp(line, "sa\n", 3) == 0)
-		sa(stack_a, -1);
+		sa(stacks, -1);
 	if (ft_memcmp(line, "sb\n", 3) == 0)
-		sb(stack_b, -1);
+		sb(stacks, -1);
 	if (ft_memcmp(line, "ss\n", 3) == 0)
-		ss(stack_a, stack_b, -1);
+		ss(stacks, -1);
 	if (ft_memcmp(line, "pa\n", 3) == 0)
-		pa(stack_a, stack_b, -1);
+		pa(stacks, -1);
 	if (ft_memcmp(line, "pb\n", 3) == 0)
-		pb(stack_b, stack_a, -1);
+		pb(stacks, -1);
 	if (ft_memcmp(line, "ra\n", 3) == 0)
-		ra(stack_a, -1);
+		ra(stacks, -1);
 	if (ft_memcmp(line, "rb\n", 3) == 0)
-		rb(stack_b, -1);
+		rb(stacks, -1);
 	if (ft_memcmp(line, "rr\n", 3) == 0)
-		rr(stack_a, stack_b, -1);
+		rr(stacks, -1);
 	if (ft_memcmp(line, "rra\n", 4) == 0)
-		rra(stack_a, -1);
+		rra(stacks, -1);
 	if (ft_memcmp(line, "rrb\n", 4) == 0)
-		rrb(stack_b, -1);
+		rrb(stacks, -1);
 	if (ft_memcmp(line, "rrr\n", 4) == 0)
-		rrr(stack_a, stack_b, -1);
+		rrr(stacks, -1);
 }
 
 static void	check_stack(char **stack)
@@ -103,36 +103,53 @@ static void	print_stack(char **stack, char letter)
 	}
 }
 
-int	main(int argc, char **argv)
-{
-	char	**stack_a;
-	char	**stack_b;
-	char	*line;
+#include "libft.h"      // Asegúrate de tener la biblioteca adecuada para `ft_printf` y `get_next_line`.
+#include "push_swap.h"  // Incluye aquí el archivo de cabecera con la definición de `t_stacks` y funciones auxiliares.
 
-	if (argc < 3)
-		error_exit("You have to pass more than 2 argmunts;");
-	stack_b = NULL;
-	stack_a = build_stack(argc, argv);
-	print_stack(stack_a, 'A');
-	radix_sort(&stack_a, &stack_b);
-	print_stack(stack_a, 'A');
-	free_stack(stack_a);
-	if (stack_b)
-		free_stack(stack_b);
-	return(0);
-	ft_printf("move: ");
-	line = get_next_line(0);
-	while (line)
-	{
-		ft_call_function(line, &stack_a, &stack_b);
-		print_stack(stack_a, 'A');
-		print_stack(stack_b, 'B');
-		free(line);
-		ft_printf("move: ");
-		line = get_next_line(0);
-	}
-	free(stack_a);
-	if (stack_b)
-		free(stack_b);
+int main(int argc, char **argv) {
+    t_stacks stacks;
+    char *line;
+
+    // Verificar que se han pasado suficientes argumentos
+    if (argc < 3)
+        error_exit("You have to pass more than 2 arguments.");
+
+    // Inicializar stack_a y stack_b
+    stacks.stack_a = build_stack(argc, argv);  // build_stack debería inicializar y cargar stack_a
+    stacks.stack_b = NULL;                     // Inicializar stack_b como NULL
+    stacks.size_a = argc - 1;                  // El tamaño de stack_a es argc - 1 (ignorando argv[0])
+    stacks.size_b = 0;
+    stacks.move_count = 0;
+
+    // Imprimir stack inicial
+    print_stack(stacks.stack_a, 'A');
+
+    // Ejecutar el algoritmo de ordenación
+    radix_sort(&stacks);
+
+    // Imprimir stack_a ordenado
+    print_stack(stacks.stack_a, 'A');
+
+    // Liberar memoria de stack_a y stack_b
+    free_stack(stacks.stack_a);
+    free_stack(stacks.stack_b);
 	return (0);
+    // Interacción con el usuario para realizar movimientos manualmente
+    ft_printf("move: ");
+    line = get_next_line(0);  // Leer línea de entrada
+    while (line) {
+        ft_call_function(line, &stacks);  // Ejecutar la función correspondiente al comando
+        print_stack(stacks.stack_a, 'A'); // Imprimir estado actual de stack_a
+        print_stack(stacks.stack_b, 'B'); // Imprimir estado actual de stack_b
+        free(line);                       // Liberar memoria de la línea
+        ft_printf("move: ");
+        line = get_next_line(0);
+    }
+
+    // Liberar memoria final de las pilas
+    free_stack(stacks.stack_a);
+    if (stacks.stack_b)
+        free_stack(stacks.stack_b);
+
+    return (0);
 }
