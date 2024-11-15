@@ -16,6 +16,16 @@
 # include "libft/libft.h"
 # include <stdio.h>
 
+typedef struct s_stacks {
+    char **stack_a;
+    char **stack_b;
+    int size_a;
+    int size_b;
+    int move_count;
+    int *target_positions; // Arreglo para posiciones objetivo en stack_a
+    int group_size; // Tamaño de grupo para reducir movimientos en radix_sort
+} t_stacks;
+
 /*
 ** Declarations from ps_utils.c
 */
@@ -23,38 +33,50 @@ void	error_exit(const char *msg);
 size_t	ft_stacklen(char **stack);
 void	free_stack(char **stack);
 /*
-** Declarations from ps_logic.c
+** Declarations from pu_sort_utils.c
 */
-void	radix_sort(char ***stack_a, char ***stack_b);
+int     find_min_value(char **stack);
+int     find_max_value(char **stack);
+int     get_max_bits(int max, int min);
+/*
+** Declarations from ps_sorters_2_5.c
+*/
+void	sort_two(t_stacks *stacks);
+void	sort_three(t_stacks *stacks);
+void	sort_five(t_stacks *stacks);
+/*
+** Declarations from ps_radix_sort.c
+*/
+void	radix_sort(t_stacks *stacks);
 /*
 ** Declarations from ps_moves.c
 */
-void	swap(char **stack);
-void	rotate(char **stack);
-void	rotate_reverse(char **stack);
-void	push(char ***stack1, char ***stack2);;
+int	swap(char **stack);
+int	rotate(char **stack);
+int	rotate_reverse(char **stack);
+int	push(char ***stack1, char ***stack2);;
 /*
 ** Declarations from ps_swaper.c
 */
-void	sa(char ***stack_a, int fd);
-void	sb(char ***stack_b, int fd);
-void	ss(char ***stack_a, char ***stack_b, int fd);
+void	sa(t_stacks *stacks, int fd);
+void	sb(t_stacks *stacks, int fd);
+void	ss(t_stacks *stacks, int fd);
 /*
 ** Declarations from pu_rotates.c
 */
-void	ra(char ***stack_a, int fd);
-void	rb(char ***stack_b, int fd);
-void	rr(char ***stack_a, char ***stack_b, int fd);
+void	ra(t_stacks *stacks, int fd);
+void	rb(t_stacks *stacks, int fd);
+void	rr(t_stacks *stacks, int fd);
 /*
 ** Declarations from pu_rotates_reverse.c
 */
-void	rra(char ***stack_a, int fd);
-void	rrb(char ***stack_b, int fd);
-void	rrr(char ***stack_a, char ***stack_b, int fd);
+void	rra(t_stacks *stacks, int fd);
+void	rrb(t_stacks *stacks, int fd);
+void	rrr(t_stacks *stacks, int fd);
 /*
 ** Declarations from ps_pushes.c
 */
-void	pa(char ***stack_a, char ***stack_b, int fd);
-void	pb(char ***stack_b, char ***stack_a, int fd);
+void	pa(t_stacks *stacks, int fd);
+void    pb(t_stacks *stacks, int fd);
 
 #endif
