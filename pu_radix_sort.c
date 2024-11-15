@@ -48,8 +48,8 @@ static void simple_sort(t_stacks *stacks)
 
 void radix_sort(t_stacks *stacks)
 {
-    int min;
-    int bit;
+    long min;
+    long bit;
     int i;
     int size;
     long num;

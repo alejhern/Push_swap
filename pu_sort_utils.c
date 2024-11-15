@@ -11,12 +11,11 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int find_min_value(char **stack)
+long find_min_value(char **stack)
 {
-    int i;
-    long min;
-    long current;
+    int     i;
+    long    min;
+    long    current;
 
     if (!stack || !stack[0])
         return (0);
@@ -29,14 +28,14 @@ int find_min_value(char **stack)
             min = current;
         i++;
     }
-    return ((int)min);
+    return (min);
 }
 
-int find_max_value(char **stack)
+long find_max_value(char **stack)
 {
-    int i;
-    long max;
-    long current;
+    int     i;
+    long    max;
+    long    current;
 
     if (!stack || !stack[0])
         return (0);
@@ -49,15 +48,15 @@ int find_max_value(char **stack)
             max = current;
         i++;
     }
-    return ((int)max);
+    return (max);
 }
 
-int get_max_bits(int max, int min)
+int get_max_bits(long max, long min)
 {
-    unsigned int range;
-    int bits;
+    unsigned long   range;
+    int             bits;
 
-    range = (unsigned int)(max - min);
+    range = (unsigned long)(max - min);
     bits = 0;
     while (range > 0)
     {

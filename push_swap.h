@@ -35,9 +35,9 @@ void	free_stack(char **stack);
 /*
 ** Declarations from pu_sort_utils.c
 */
-int     find_min_value(char **stack);
-int     find_max_value(char **stack);
-int     get_max_bits(int max, int min);
+long    find_min_value(char **stack);
+long    find_max_value(char **stack);
+int     get_max_bits(long max, long min);
 /*
 ** Declarations from ps_sorters_2_5.c
 */
