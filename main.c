@@ -104,49 +104,34 @@ static void	print_stack(char **stack, char letter)
 }
 
 int main(int argc, char **argv) {
-    t_stacks stacks;
-    char *line;
+    t_stacks	stacks;
+    char		*line;
 
-    // Verificar que se han pasado suficientes argumentos
     if (argc < 3)
         error_exit("You have to pass more than 2 arguments.");
-
-    // Inicializar stack_a y stack_b
-    stacks.stack_a = build_stack(argc, argv);  // build_stack debería inicializar y cargar stack_a
-    stacks.stack_b = NULL;                     // Inicializar stack_b como NULL
-    stacks.size_a = argc - 1;                  // El tamaño de stack_a es argc - 1 (ignorando argv[0])
+    stacks.stack_a = build_stack(argc, argv);
+    stacks.stack_b = NULL;
+    stacks.size_a = argc - 1;
     stacks.size_b = 0;
     stacks.move_count = 0;
-
-    // Imprimir stack inicial
     print_stack(stacks.stack_a, 'A');
-
-    // Ejecutar el algoritmo de ordenación
     radix_sort(&stacks);
-
-    // Imprimir stack_a ordenado
     print_stack(stacks.stack_a, 'A');
-
-    // Liberar memoria de stack_a y stack_b
     free_stack(stacks.stack_a);
     free_stack(stacks.stack_b);
-	return (0);
-    // Interacción con el usuario para realizar movimientos manualmente
+    return (0);
     ft_printf("move: ");
-    line = get_next_line(0);  // Leer línea de entrada
+    line = get_next_line(0);
     while (line) {
-        ft_call_function(line, &stacks);  // Ejecutar la función correspondiente al comando
-        print_stack(stacks.stack_a, 'A'); // Imprimir estado actual de stack_a
-        print_stack(stacks.stack_b, 'B'); // Imprimir estado actual de stack_b
-        free(line);                       // Liberar memoria de la línea
+        ft_call_function(line, &stacks);
+        print_stack(stacks.stack_a, 'A');
+        print_stack(stacks.stack_b, 'B');
+        free(line);
         ft_printf("move: ");
         line = get_next_line(0);
     }
-
-    // Liberar memoria final de las pilas
     free_stack(stacks.stack_a);
     if (stacks.stack_b)
         free_stack(stacks.stack_b);
-
     return (0);
 }

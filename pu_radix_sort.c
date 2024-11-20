@@ -15,9 +15,9 @@
 
 static int is_sorted(char **stack, size_t size)
 {
-    int i;
-    long prev;
-    long current;
+    int     i;
+    long    prev;
+    long    current;
 
     if (!stack || !stack[0])
         return (1);
@@ -48,11 +48,10 @@ static void simple_sort(t_stacks *stacks)
 
 void radix_sort(t_stacks *stacks)
 {
-    long min;
-    long bit;
-    int i;
-    int size;
-    long num;
+    long    min;
+    long    bit;
+    int     i;
+    int     size;
 
     min = find_min_value(stacks->stack_a);
     size = ft_stacklen(stacks->stack_a);
@@ -63,8 +62,7 @@ void radix_sort(t_stacks *stacks)
         i = 0;
         while (i < size)
         {
-            num = ft_atoi((stacks->stack_a)[0]) - min;
-            if ((num >> bit) & 1)
+            if (((ft_atoi((stacks->stack_a)[0]) - min) >> bit) & 1)
                 ra(stacks, 1);
             else
                 pb(stacks, 1);
