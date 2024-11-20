@@ -33,7 +33,7 @@ void	error_exit(const char *msg);
 size_t	ft_stacklen(char **stack);
 void	free_stack(char **stack);
 /*
-** Declarations from pu_sort_utils.c
+** Declarations from ps_sort_utils.c
 */
 long    find_min_value(char **stack);
 long    find_max_value(char **stack);
@@ -62,13 +62,13 @@ void	sa(t_stacks *stacks, int fd);
 void	sb(t_stacks *stacks, int fd);
 void	ss(t_stacks *stacks, int fd);
 /*
-** Declarations from pu_rotates.c
+** Declarations from ps_rotates.c
 */
 void	ra(t_stacks *stacks, int fd);
 void	rb(t_stacks *stacks, int fd);
 void	rr(t_stacks *stacks, int fd);
 /*
-** Declarations from pu_rotates_reverse.c
+** Declarations from ps_rotates_reverse.c
 */
 void	rra(t_stacks *stacks, int fd);
 void	rrb(t_stacks *stacks, int fd);

@@ -13,15 +13,15 @@
 LIB_DIR = libft/
 
 SRCS = main.c \
-       pu_moves.c \
-       pu_pushes.c \
-       pu_sort_utils.c \
-       pu_sorters_2_5.c \
-       pu_radix_sort.c \
-       pu_rotates.c \
-       pu_rotates_reverse.c \
-       pu_swapers.c \
-       pu_utils.c
+       ps_moves.c \
+       ps_pushes.c \
+       ps_sort_utils.c \
+       ps_sorters_2_5.c \
+       ps_radix_sort.c \
+       ps_rotates.c \
+       ps_rotates_reverse.c \
+       ps_swapers.c \
+       ps_utils.c
 
 OBJ = $(SRCS:.c=.o)
 # OBJ_B = $(SRCS_B:.c=.o)
