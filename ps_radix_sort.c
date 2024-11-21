@@ -49,7 +49,7 @@ static void simple_sort(t_stacks *stacks)
 void radix_sort(t_stacks *stacks)
 {
     long    min;
-    long    bit;
+    int     bit;
     int     i;
     int     size;
 
