@@ -54,7 +54,7 @@ void	radix_sort(t_stacks *stacks)
 	int		size;
 
 	min = find_min_value(stacks->stack_a);
-	size = ft_stacklen(stacks->stack_a);
+	size = stacks->size_a;
 	bit = 0;
 	simple_sort(stacks);
 	while (bit < get_max_bits(find_max_value(stacks->stack_a), min)
