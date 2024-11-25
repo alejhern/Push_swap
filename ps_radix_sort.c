@@ -42,8 +42,8 @@ static void	simple_sort(t_stacks *stacks)
 		sort_two(stacks);
 	else if (stacks->size_a == 3)
 		sort_three(stacks);
-	else if (stacks->size_a == 5)
-		sort_five(stacks);
+	else if (stacks->size_a == 4 || stacks->size_a == 5)
+		sort_four_to_five(stacks);
 }
 
 void	radix_sort(t_stacks *stacks)

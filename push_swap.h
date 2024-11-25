@@ -44,7 +44,7 @@ int			get_max_bits(long max, long min);
 */
 void		sort_two(t_stacks *stacks);
 void		sort_three(t_stacks *stacks);
-void		sort_five(t_stacks *stacks);
+void		sort_four_to_five(t_stacks *stacks);
 /*
 ** Declarations from ps_radix_sort.c
 */

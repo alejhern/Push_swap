@@ -20,64 +20,53 @@ void	sort_two(t_stacks *stacks)
 
 void	sort_three(t_stacks *stacks)
 {
-	int	first;
-	int	second;
-	int	third;
+	long	first;
+	long	second;
+	long	third;
 
 	first = ft_atoi(stacks->stack_a[0]);
 	second = ft_atoi(stacks->stack_a[1]);
 	third = ft_atoi(stacks->stack_a[2]);
-	if (first > second && first > third)
-		ra(stacks, 1);
+	if (first > second && second < third && first < third)
+		sa(stacks, 1);
 	else if (first > second && second > third)
 	{
 		sa(stacks, 1);
 		rra(stacks, 1);
 	}
-	else if (first > third && second < third)
-		rra(stacks, 1);
-	else if (first < second && first > third)
-		sa(stacks, 1);
-	else if (first < third && second > third)
+	else if (first > second && second < third && first > third)
 		ra(stacks, 1);
+	else if (first < second && second > third && first < third)
+	{
+		sa(stacks, 1);
+		ra(stacks, 1);
+	}
+	else if (first < second && second > third && first > third)
+		rra(stacks, 1);
 }
 
-void	sort_four(t_stacks *stacks)
+void	sort_four_to_five(t_stacks *stacks)
 {
 	long	min;
 	int		i;
 
-	min = find_min_value(stacks->stack_a);
-	i = 0;
-	while (i < stacks->size_a)
-	{
-		if (ft_atoi(stacks->stack_a[i]) == min)
-		{
-			pb(stacks, 1);
-			break ;
-		}
-		i++;
-	}
+    while (stacks->size_a != 3)
+    {
+        min = find_min_value(stacks->stack_a);
+        i = 0;       
+        while (i < stacks->size_a)
+        {
+            if (ft_atoi(stacks->stack_a[0]) == min)
+            {
+                pb(stacks, 1);
+                break ;
+            }
+            else
+                ra(stacks, 1);
+            i++;
+        }
+    }
 	sort_three(stacks);
-	pa(stacks, 1);
-}
-
-void	sort_five(t_stacks *stacks)
-{
-	long	min;
-	int		i;
-
-	min = find_min_value(stacks->stack_a);
-	i = 0;
-	while (i < stacks->size_a)
-	{
-		if (ft_atoi(stacks->stack_a[i]) == min)
-		{
-			pb(stacks, 1);
-			break ;
-		}
-		i++;
-	}
-	sort_four(stacks);
-	pa(stacks, 1);
+    while (stacks->size_b)
+	    pa(stacks, 1);
 }
