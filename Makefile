@@ -17,7 +17,7 @@ SRCS = main.c \
        ps_pushes.c \
        ps_sort_utils.c \
        ps_sorters_2_5.c \
-       ps_radix_sort.c \
+       ps_turk_sort.c \
        ps_rotates.c \
        ps_rotates_reverse.c \
        ps_swapers.c \

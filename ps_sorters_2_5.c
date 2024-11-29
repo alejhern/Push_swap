@@ -50,23 +50,23 @@ void	sort_four_to_five(t_stacks *stacks)
 	long	min;
 	int		i;
 
-    while (stacks->size_a != 3)
-    {
-        min = find_min_value(stacks->stack_a);
-        i = 0;       
-        while (i < stacks->size_a)
-        {
-            if (ft_atoi(stacks->stack_a[0]) == min)
-            {
-                pb(stacks, 1);
-                break ;
-            }
-            else
-                ra(stacks, 1);
-            i++;
-        }
-    }
+	while (stacks->size_a != 3)
+	{
+		min = find_min_value(stacks->stack_a);
+		i = 0;
+		while (i < stacks->size_a)
+		{
+			if (ft_atoi(stacks->stack_a[0]) == min)
+			{
+				pb(stacks, 1);
+				break ;
+			}
+			else
+				ra(stacks, 1);
+			i++;
+		}
+	}
 	sort_three(stacks);
-    while (stacks->size_b)
-	    pa(stacks, 1);
+	while (stacks->size_b)
+		pa(stacks, 1);
 }

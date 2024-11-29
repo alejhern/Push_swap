@@ -23,7 +23,8 @@ typedef struct s_stacks
 	int		size_a;
 	int		size_b;
 	int		move_count;
-	int 	*target_positions;
+	int		*sorted_values;
+	int		chunks;
 	int		group_size;       
 }			t_stacks;
 
@@ -32,13 +33,16 @@ typedef struct s_stacks
 */
 void		error_exit(const char *msg);
 size_t		ft_stacklen(char **stack);
+int			ft_sqrt(int nb);
+int			is_sorted(char **stack, size_t size);
 void		free_stack(char **stack);
 /*
 ** Declarations from ps_sort_utils.c
 */
-long		find_min_value(char **stack);
 long		find_max_value(char **stack);
-int			get_max_bits(long max, long min);
+long		find_min_value(char **stack);
+int			find_position(char **stack, int size, int value, int mode);
+int			*get_sorted_values(t_stacks *stacks, int total_size);
 /*
 ** Declarations from ps_sorters_2_5.c
 */
@@ -46,9 +50,9 @@ void		sort_two(t_stacks *stacks);
 void		sort_three(t_stacks *stacks);
 void		sort_four_to_five(t_stacks *stacks);
 /*
-** Declarations from ps_radix_sort.c
+** Declarations from ps_turk_sort.c
 */
-void		radix_sort(t_stacks *stacks);
+void		turk_sort(t_stacks *stacks);
 /*
 ** Declarations from ps_moves.c
 */

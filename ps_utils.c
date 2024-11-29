@@ -37,6 +37,39 @@ void	free_stack(char **stack)
 	}
 }
 
+int	ft_sqrt(int nb)
+{
+	int	i;
+
+	i = 0;
+	while (i * i <= nb && i * i >= 0)
+		i++;
+	return (i - 1);
+}
+
+int	is_sorted(char **stack, size_t size)
+{
+	int		i;
+	long	prev;
+	long	current;
+
+	if (!stack || !stack[0])
+		return (1);
+	if (size != ft_stacklen(stack))
+		return (0);
+	i = 0;
+	prev = ft_atoi(stack[0]);
+	while (stack[i])
+	{
+		current = ft_atoi(stack[i]);
+		if (current < prev)
+			return (0);
+		prev = current;
+		i++;
+	}
+	return (1);
+}
+
 void	error_exit(const char *msg)
 {
 	ft_printf("%s", msg);
