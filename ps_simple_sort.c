@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_sorters_2_5.c                                   :+:      :+:    :+:   */
+/*   ps_simple_sort.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amhernandez <alejhern@student.42.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 19:54:26 by amhernandez       #+#    #+#             */
-/*   Updated: 2024/11/21 20:22:38 by alejhern         ###   ########.fr       */
+/*   Updated: 2024/12/09 22:19:23 by alejhern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort_two(t_stacks *stacks)
+static void	sort_two(t_stacks *stacks)
 {
 	if (ft_atoi(stacks->stack_a[0]) > ft_atoi(stacks->stack_a[1]))
 		sa(stacks, 1);
 }
 
-void	sort_three(t_stacks *stacks)
+static void	sort_three(t_stacks *stacks)
 {
 	long	first;
 	long	second;
@@ -45,7 +45,7 @@ void	sort_three(t_stacks *stacks)
 		rra(stacks, 1);
 }
 
-void	sort_four_to_five(t_stacks *stacks)
+static void	sort_four_to_five(t_stacks *stacks)
 {
 	long	min;
 	int		i;
@@ -69,4 +69,14 @@ void	sort_four_to_five(t_stacks *stacks)
 	sort_three(stacks);
 	while (stacks->size_b)
 		pa(stacks, 1);
+}
+
+void	simple_sort(t_stacks *stacks)
+{
+	if (stacks->size_a == 2)
+		sort_two(stacks);
+	else if (stacks->size_a == 3)
+		sort_three(stacks);
+	else if (stacks->size_a == 4 || stacks->size_a == 5)
+		sort_four_to_five(stacks);
 }
