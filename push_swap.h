@@ -6,7 +6,7 @@
 /*   By: amhernandez <alejhern@student.42.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 11:09:26 by amhernandez       #+#    #+#             */
-/*   Updated: 2024/11/21 20:24:17 by alejhern         ###   ########.fr       */
+/*   Updated: 2024/12/09 22:48:05 by alejhern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ typedef struct s_stacks
 	int		move_count;
 	int		*sorted_values;
 	int		chunks;
-	int		group_size;       
+	int		group_size;
 }			t_stacks;
 
 /*
@@ -33,7 +33,7 @@ typedef struct s_stacks
 */
 void		error_exit(const char *msg);
 size_t		ft_stacklen(char **stack);
-int			ft_sqrt(int nb);
+int			has_values_in_range(char **stack, int size, int min, int max);
 int			is_sorted(char **stack, size_t size);
 void		free_stack(char **stack);
 /*
@@ -44,11 +44,9 @@ long		find_min_value(char **stack);
 int			find_position(char **stack, int size, int value, int mode);
 int			*get_sorted_values(t_stacks *stacks, int total_size);
 /*
-** Declarations from ps_sorters_2_5.c
+** Declarations from ps_simple_sort.c
 */
-void		sort_two(t_stacks *stacks);
-void		sort_three(t_stacks *stacks);
-void		sort_four_to_five(t_stacks *stacks);
+void		simple_sort(t_stacks *stacks);
 /*
 ** Declarations from ps_turk_sort.c
 */

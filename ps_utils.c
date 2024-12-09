@@ -6,7 +6,7 @@
 /*   By: alejhern <alejhern@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 21:51:39 by alejhern          #+#    #+#             */
-/*   Updated: 2024/11/21 20:23:43 by alejhern         ###   ########.fr       */
+/*   Updated: 2024/12/09 22:47:02 by alejhern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,20 @@ void	free_stack(char **stack)
 	}
 }
 
-int	ft_sqrt(int nb)
+int	has_values_in_range(char **stack, int size, int min, int max)
 {
 	int	i;
+	int	value;
 
 	i = 0;
-	while (i * i <= nb && i * i >= 0)
+	while (i < size)
+	{
+		value = ft_atoi(stack[i]);
+		if (value >= min && value <= max)
+			return (1);
 		i++;
-	return (i - 1);
+	}
+	return (0);
 }
 
 int	is_sorted(char **stack, size_t size)

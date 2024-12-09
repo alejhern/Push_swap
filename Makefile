@@ -6,7 +6,7 @@
 #    By: alejhern <alejhern@student.42barcelona.co  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/09 21:50:18 by alejhern          #+#    #+#              #
-#    Updated: 2024/11/21 20:21:37 by alejhern         ###   ########.fr        #
+#    Updated: 2024/12/09 22:17:54 by alejhern         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ SRCS = main.c \
        ps_moves.c \
        ps_pushes.c \
        ps_sort_utils.c \
-       ps_sorters_2_5.c \
+       ps_simple_sort.c \
        ps_turk_sort.c \
        ps_rotates.c \
        ps_rotates_reverse.c \
