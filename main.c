@@ -6,7 +6,7 @@
 /*   By: alejhern <alejhern@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 21:37:34 by alejhern          #+#    #+#             */
-/*   Updated: 2024/11/21 20:21:22 by alejhern         ###   ########.fr       */
+/*   Updated: 2024/12/09 23:04:21 by alejhern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ static void	print_stack(char **stack, char letter)
 	ft_printf("--- STACK %c ---\n", letter);
 	while (stack[index])
 	{
-		ft_printf("Stack_%c[%02d]:%20s\n", ft_tolower(letter), index,
+		ft_printf("Stack_%c[%03d]:%20s\n", ft_tolower(letter), index,
 			stack[index]);
 		index++;
 	}

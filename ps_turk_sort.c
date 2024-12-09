@@ -6,7 +6,7 @@
 /*   By: amhernandez <alejhern@student.42.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 00:34:20 by amhernandez       #+#    #+#             */
-/*   Updated: 2024/12/09 22:46:29 by alejhern         ###   ########.fr       */
+/*   Updated: 2024/12/09 23:03:05 by alejhern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,21 +97,10 @@ void	turk_sort(t_stacks *stacks)
 	int	*values;
 
 	total_size = stacks->size_a;
-	stacks->chunks = 0;
-	if (total_size <= 5)
-	{
-		simple_sort(stacks);
-		return ;
-	}
 	if (total_size <= 100)
 		stacks->chunks = 5;
 	else
-	{
-		while (stacks->chunks * stacks->chunks <= total_size && stacks->chunks
-			* stacks->chunks >= 0)
-			stacks->chunks++;
-		stacks->chunks--;
-	}
+		stacks->chunks = total_size / 35;
 	stacks->group_size = (total_size + stacks->chunks - 1) / stacks->chunks;
 	values = get_sorted_values(stacks, total_size);
 	sort_in_chunks(stacks, values, total_size);
