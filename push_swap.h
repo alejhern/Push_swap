@@ -40,6 +40,7 @@ void		error_exit(const char *msg);
 ** Declarations from ps_utils.c
 */
 int			has_values_in_range(char **stack, int size, int min, int max);
+int			calculate_cost(int size, int pos);
 int			find_best_value_in_range(t_stacks *stacks, int start, int end);
 void		move_to_top(t_stacks *stacks, int value);
 /*

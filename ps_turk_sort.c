@@ -34,10 +34,7 @@ static void	insert_sorted_in_b(t_stacks *stacks, int value)
 	int	cost_b;
 
 	pos_b = find_position(stacks->stack_b, stacks->size_b, value, 1);
-	if (pos_b <= stacks->size_b / 2)
-		cost_b = pos_b;
-	else
-		cost_b = pos_b - stacks->size_b;
+	cost_b = calculate_cost(stacks->size_b, pos_b);
 	rotate_stacks_simultaneously(stacks, 0, cost_b);
 	pb(stacks, 1);
 }
@@ -52,10 +49,7 @@ static void	sort_and_move_back_to_a(t_stacks *stacks)
 	{
 		max = find_max_value(stacks->stack_b);
 		pos_b = find_position(stacks->stack_b, stacks->size_b, max, 0);
-		if (pos_b <= stacks->size_b / 2)
-			cost_b = pos_b;
-		else
-			cost_b = pos_b - stacks->size_b;
+		cost_b = calculate_cost(stacks->size_b, pos_b);
 		rotate_stacks_simultaneously(stacks, 0, cost_b);
 		pa(stacks, 1);
 	}

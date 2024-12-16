@@ -35,29 +35,37 @@ static int	ft_abs(int n)
 	return (n);
 }
 
+int	calculate_cost(int size, int pos)
+{
+	if (pos <= size / 2)
+		return (pos);
+	else
+		return (pos - size);
+}
+
 int	find_best_value_in_range(t_stacks *stacks, int start, int end)
 {
 	int	best_value;
 	int	min_cost;
-	int	value;
-	int	cost;
 	int	i;
+	int	cost;
 
 	best_value = -1;
 	min_cost = INT_MAX;
 	i = -1;
 	while (++i < stacks->size_a)
 	{
-		value = ft_atoi(stacks->stack_a[i]);
-		if (value >= start && value <= end)
+		if (ft_atoi(stacks->stack_a[i]) >= start
+			&& ft_atoi(stacks->stack_a[i]) <= end)
 		{
-			cost = i - stacks->size_a;
-			if (i <= stacks->size_a / 2)
-				cost = i;
-			if (ft_abs(cost) < min_cost)
+			cost = ft_abs(calculate_cost(stacks->size_a, i))
+				+ ft_abs(calculate_cost(stacks->size_b,
+						find_position(stacks->stack_b, stacks->size_b,
+							ft_atoi(stacks->stack_a[i]), 1)));
+			if (cost < min_cost)
 			{
-				min_cost = ft_abs(cost);
-				best_value = value;
+				min_cost = cost;
+				best_value = ft_atoi(stacks->stack_a[i]);
 			}
 		}
 	}
@@ -70,15 +78,18 @@ void	move_to_top(t_stacks *stacks, int value)
 	int	cost_a;
 
 	pos_a = find_position(stacks->stack_a, stacks->size_a, value, 0);
-	if (pos_a <= stacks->size_a / 2)
-		cost_a = pos_a;
-	else
-		cost_a = pos_a - stacks->size_a;
-	while (cost_a != 0)
+	cost_a = calculate_cost(stacks->size_a, pos_a);
+	while (cost_a)
 	{
-		if (cost_a > 0 && cost_a--)
+		if (cost_a > 0)
+		{
 			ra(stacks, 1);
-		else if (cost_a < 0 && cost_a++)
+			cost_a--;
+		}
+		else
+		{
 			rra(stacks, 1);
+			cost_a++;
+		}
 	}
 }
