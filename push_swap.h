@@ -29,13 +29,19 @@ typedef struct s_stacks
 }			t_stacks;
 
 /*
+** Declarations from ps_stack_utils.c
+*/
+char		**build_stack(int argc, char **argv);
+void		print_stack(char **stack, char stack_name);
+void		free_stack(char **stack);
+void		error_exit(const char *msg);
+
+/*
 ** Declarations from ps_utils.c
 */
-void		error_exit(const char *msg);
-size_t		ft_stacklen(char **stack);
 int			has_values_in_range(char **stack, int size, int min, int max);
-int			is_sorted(char **stack, size_t size);
-void		free_stack(char **stack);
+int			find_best_value_in_range(t_stacks *stacks, int start, int end);
+void		move_to_top(t_stacks *stacks, int value);
 /*
 ** Declarations from ps_sort_utils.c
 */
@@ -54,11 +60,11 @@ void		turk_sort(t_stacks *stacks);
 /*
 ** Declarations from ps_moves.c
 */
-int			swap(char **stack);
-int			rotate(char **stack);
-int			rotate_reverse(char **stack);
-int			push(char ***stack1, char ***stack2);
-;
+int			swap(char **stack, int size);
+int			rotate(char **stack, int size);
+int			rotate_reverse(char **stack, int size);
+int			push(char ***stack1, char ***stack2, int size_1, int size_2);
+
 /*
 ** Declarations from ps_swaper.c
 */

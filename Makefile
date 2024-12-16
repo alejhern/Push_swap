@@ -13,6 +13,7 @@
 LIB_DIR = libft/
 
 SRCS = main.c \
+       ps_stack_utils.c \
        ps_moves.c \
        ps_pushes.c \
        ps_sort_utils.c \
@@ -23,14 +24,24 @@ SRCS = main.c \
        ps_swapers.c \
        ps_utils.c
 
+SRCS_B = checker.c	\
+	ps_stack_utils.c	\
+	ps_moves.c	\
+	ps_pushes.c	\
+	ps_rotates.c	\
+	ps_rotates_reverse.c	\
+	ps_swapers.c
+
 OBJ = $(SRCS:.c=.o)
-# OBJ_B = $(SRCS_B:.c=.o)
+OBJ_B = $(SRCS_B:.c=.o)
 
 # **************************************************************************** #
 #                                 VARIABLES                                    #
 # **************************************************************************** #
 
 NAME = push_swap
+
+CHECKER = checker
 
 CC = cc
 
@@ -69,5 +80,5 @@ re: fclean all
 #                                BONUS                                         #
 # **************************************************************************** #
 
-bonus: $(LIBFT) $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) -L$(LIB_DIR) -lft -o $(NAME)
+bonus: $(LIBFT) $(OBJ_B)
+	$(CC) $(CFLAGS) $(OBJ_B) -L$(LIB_DIR) -lft -o $(CHECKER)
