@@ -14,7 +14,7 @@
 
 void	ra(t_stacks *stacks, int fd)
 {
-	if (rotate(stacks->stack_a))
+	if (rotate(stacks->stack_a, stacks->size_a))
 	{
 		stacks->move_count++;
 		ft_putendl_fd("ra", fd);
@@ -23,7 +23,7 @@ void	ra(t_stacks *stacks, int fd)
 
 void	rb(t_stacks *stacks, int fd)
 {
-	if (rotate(stacks->stack_b))
+	if (rotate(stacks->stack_b, stacks->size_b))
 	{
 		stacks->move_count++;
 		ft_putendl_fd("rb", fd);
@@ -35,8 +35,8 @@ void	rr(t_stacks *stacks, int fd)
 	int	moved_a;
 	int	moved_b;
 
-	moved_a = rotate(stacks->stack_a);
-	moved_b = rotate(stacks->stack_b);
+	moved_a = rotate(stacks->stack_a, stacks->size_a);
+	moved_b = rotate(stacks->stack_b, stacks->size_b);
 	if (moved_a || moved_b)
 	{
 		stacks->move_count++;

@@ -14,7 +14,7 @@
 
 void	sa(t_stacks *stacks, int fd)
 {
-	if (swap(stacks->stack_a))
+	if (swap(stacks->stack_a, stacks->size_a))
 	{
 		stacks->move_count++;
 		ft_putendl_fd("sa", fd);
@@ -23,7 +23,7 @@ void	sa(t_stacks *stacks, int fd)
 
 void	sb(t_stacks *stacks, int fd)
 {
-	if (swap(stacks->stack_b))
+	if (swap(stacks->stack_b, stacks->size_b))
 	{
 		stacks->move_count++;
 		ft_putendl_fd("sb", fd);
@@ -32,7 +32,8 @@ void	sb(t_stacks *stacks, int fd)
 
 void	ss(t_stacks *stacks, int fd)
 {
-	if (swap(stacks->stack_a) || swap(stacks->stack_b))
+	if (swap(stacks->stack_a, stacks->size_a) || swap(stacks->stack_b,
+			stacks->size_b))
 	{
 		stacks->move_count++;
 		ft_putendl_fd("ss", fd);

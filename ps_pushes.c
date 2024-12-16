@@ -16,7 +16,8 @@ void	pa(t_stacks *stacks, int fd)
 {
 	int	result;
 
-	result = push(&(stacks->stack_a), &(stacks->stack_b));
+	result = push(&(stacks->stack_a), &(stacks->stack_b), stacks->size_a,
+			stacks->size_b);
 	if (result == 1)
 	{
 		stacks->size_a++;
@@ -36,7 +37,8 @@ void	pb(t_stacks *stacks, int fd)
 {
 	int	result;
 
-	result = push(&(stacks->stack_b), &(stacks->stack_a));
+	result = push(&(stacks->stack_b), &(stacks->stack_a), stacks->size_b,
+			stacks->size_a);
 	if (result == 1)
 	{
 		stacks->size_b++;
