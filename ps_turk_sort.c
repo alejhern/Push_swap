@@ -30,24 +30,20 @@ static void	rotate_to_minimize_cost(t_stacks *stacks, int cost_a, int cost_b)
 
 void	split_to_chunks(t_stacks *stacks, long min, long max)
 {
-	int		i;
-	int		size;
-	long	current_value;
+	int	pos;
 
-	size = stacks->size_a;
-	i = 0;
-	while (i < size)
+	while (has_values_in_range(stacks->stack_a, stacks->size_a, min, max))
 	{
-		current_value = ft_atoi(stacks->stack_a[0]);
-		if (current_value >= min && current_value <= max)
-		{
-			pb(stacks, 1);
-			if (current_value <= (min + max) / 2)
-				rb(stacks, 1);
-		}
+		pos = find_closest_in_range(stacks->stack_a, stacks->size_a, min, max);
+		if (pos <= stacks->size_a / 2)
+			while (pos-- > 0)
+				ra(stacks, 1);
 		else
-			ra(stacks, 1);
-		i++;
+			while (pos++ < stacks->size_a)
+				rra(stacks, 1);
+		pb(stacks, 1);
+		if (ft_atoi(stacks->stack_b[0]) <= (min + max) / 2)
+			rb(stacks, 1);
 	}
 }
 
@@ -96,7 +92,7 @@ void	turk_sort(t_stacks *stacks)
 	if (total_size <= 100)
 		stacks->chunks = 5;
 	else if (total_size <= 500)
-		stacks->chunks = 11;
+		stacks->chunks = 10;
 	else
 		stacks->chunks = total_size / 35;
 	stacks->group_size = (total_size + stacks->chunks - 1) / stacks->chunks;

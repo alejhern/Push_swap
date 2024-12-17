@@ -39,10 +39,9 @@ void		error_exit(const char *msg);
 /*
 ** Declarations from ps_utils.c
 */
-int			has_values_in_range(char **stack, int size, long min, long max);
 int			calculate_cost(int size, int pos);
-long		find_best_value_in_range(t_stacks *stacks, long start, long end);
-void		move_to_top(t_stacks *stacks, long value);
+long		*get_sorted_values(t_stacks *stacks, int total_size);
+int			has_values_in_range(char **stack, int size, long min, long max);
 
 /*
 ** Declarations from ps_sort_utils.c
@@ -50,7 +49,8 @@ void		move_to_top(t_stacks *stacks, long value);
 long		find_max_value(char **stack);
 long		find_min_value(char **stack);
 int			find_position(char **stack, int size, long value, int mode);
-long		*get_sorted_values(t_stacks *stacks, int total_size);
+long		find_best_value_in_range(t_stacks *stacks, long start, long end);
+int			find_closest_in_range(char **stack, int size, long min, long max);
 
 /*
 ** Declarations from ps_simple_sort.c

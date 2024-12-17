@@ -75,48 +75,52 @@ int	find_position(char **stack, int size, long value, int mode)
 	}
 }
 
-static void	ft_qsort(long *values, int total_size)
+long	find_best_value_in_range(t_stacks *stacks, long start, long end)
 {
-	long	temp;
-	long	pivot;
+	long	best_value;
+	int		min_cost;
 	int		i;
-	int		j;
+	int		cost;
 
-	if (total_size < 2)
-		return ;
-	pivot = values[total_size / 2];
-	i = 0;
-	j = total_size - 1;
-	while (i < j)
+	best_value = -1;
+	min_cost = INT_MAX;
+	i = -1;
+	while (++i < stacks->size_a)
 	{
-		while (values[i] < pivot)
-			i++;
-		while (pivot < values[j])
-			j--;
-		if (i >= j)
-			break ;
-		temp = values[i];
-		values[i] = values[j];
-		values[j] = temp;
+		if (ft_atoi(stacks->stack_a[i]) >= start
+			&& ft_atoi(stacks->stack_a[i]) <= end)
+		{
+			cost = abs(calculate_cost(stacks->size_a, i))
+				+ abs(calculate_cost(stacks->size_b,
+						find_position(stacks->stack_b, stacks->size_b,
+							ft_atoi(stacks->stack_a[i]), 1)));
+			if (cost < min_cost)
+			{
+				min_cost = cost;
+				best_value = ft_atoi(stacks->stack_a[i]);
+			}
+		}
 	}
-	ft_qsort(values, i);
-	ft_qsort(values + i, total_size - i);
+	return (best_value);
 }
 
-long	*get_sorted_values(t_stacks *stacks, int total_size)
+int	find_closest_in_range(char **stack, int size, long min, long max)
 {
-	long	*values;
 	int		i;
+	int		closest;
+	long	current;
 
-	values = malloc(total_size * sizeof(long));
-	if (!values)
-		return (NULL);
 	i = 0;
-	while (i < total_size)
+	closest = -1;
+	while (i < size)
 	{
-		values[i] = ft_atoi(stacks->stack_a[i]);
+		current = ft_atoi(stack[i]);
+		if (current >= min && current <= max)
+		{
+			if (closest == -1 || abs(i) < abs(closest))
+				closest = i;
+		}
 		i++;
 	}
-	ft_qsort(values, total_size);
-	return (values);
+	return (closest);
 }
