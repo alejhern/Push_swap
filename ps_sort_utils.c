@@ -52,7 +52,7 @@ long	find_min_value(char **stack)
 	return (min);
 }
 
-int	find_position(char **stack, int size, int value, int mode)
+int	find_position(char **stack, int size, long value, int mode)
 {
 	int	i;
 
@@ -75,12 +75,12 @@ int	find_position(char **stack, int size, int value, int mode)
 	}
 }
 
-static void	ft_qsort(int *values, int total_size)
+static void	ft_qsort(long *values, int total_size)
 {
-	int	temp;
-	int	pivot;
-	int	i;
-	int	j;
+	long	temp;
+	long	pivot;
+	int		i;
+	int		j;
 
 	if (total_size < 2)
 		return ;
@@ -103,12 +103,12 @@ static void	ft_qsort(int *values, int total_size)
 	ft_qsort(values + i, total_size - i);
 }
 
-int	*get_sorted_values(t_stacks *stacks, int total_size)
+long	*get_sorted_values(t_stacks *stacks, int total_size)
 {
-	int	*values;
-	int	i;
+	long	*values;
+	int		i;
 
-	values = malloc(total_size * sizeof(int));
+	values = malloc(total_size * sizeof(long));
 	if (!values)
 		return (NULL);
 	i = 0;

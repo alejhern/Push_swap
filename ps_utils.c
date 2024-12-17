@@ -12,10 +12,10 @@
 
 #include "push_swap.h"
 
-int	has_values_in_range(char **stack, int size, int min, int max)
+int	has_values_in_range(char **stack, int size, long min, long max)
 {
-	int	i;
-	int	value;
+	int		i;
+	long	value;
 
 	i = 0;
 	while (i < size)
@@ -43,12 +43,12 @@ int	calculate_cost(int size, int pos)
 		return (pos - size);
 }
 
-int	find_best_value_in_range(t_stacks *stacks, int start, int end)
+long	find_best_value_in_range(t_stacks *stacks, long start, long end)
 {
-	int	best_value;
-	int	min_cost;
-	int	i;
-	int	cost;
+	long	best_value;
+	int		min_cost;
+	int		i;
+	int		cost;
 
 	best_value = -1;
 	min_cost = INT_MAX;
@@ -72,7 +72,7 @@ int	find_best_value_in_range(t_stacks *stacks, int start, int end)
 	return (best_value);
 }
 
-void	move_to_top(t_stacks *stacks, int value)
+void	move_to_top(t_stacks *stacks, long value)
 {
 	int	pos_a;
 	int	cost_a;
