@@ -84,20 +84,20 @@ static void	push_all_to_a(t_stacks *stacks)
 void	turk_sort(t_stacks *stacks)
 {
 	long	*values;
-	int		total_size;
 
-	total_size = stacks->size_a;
-	if (total_size <= 5)
+	if (is_sorted(stacks->stack_a))
+		return ;
+	if (stacks->size_a <= 5)
 		return (simple_sort(stacks));
-	if (total_size <= 100)
+	if (stacks->size_a <= 100)
 		stacks->chunks = 5;
-	else if (total_size <= 500)
+	else if (stacks->size_a <= 500)
 		stacks->chunks = 10;
 	else
-		stacks->chunks = total_size / 35;
-	stacks->group_size = (total_size + stacks->chunks - 1) / stacks->chunks;
-	values = get_sorted_values(stacks, total_size);
-	push_chunks_to_b(stacks, values, total_size);
+		stacks->chunks = stacks->size_a / 35;
+	stacks->group_size = (stacks->size_a + stacks->chunks - 1) / stacks->chunks;
+	values = get_sorted_values(stacks, stacks->size_a);
+	push_chunks_to_b(stacks, values, stacks->size_a);
 	push_all_to_a(stacks);
 	free(values);
 }

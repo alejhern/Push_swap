@@ -12,6 +12,22 @@
 
 #include "push_swap.h"
 
+static void	print_stack(char **stack, char letter)
+{
+	unsigned int	index;
+
+	if (!stack)
+		return ;
+	index = 0;
+	ft_printf("--- STACK %c ---\n", letter);
+	while (stack[index])
+	{
+		ft_printf("Stack_%c[%03d]:%20s\n", ft_tolower(letter), index,
+			stack[index]);
+		index++;
+	}
+}
+
 int	main(int argc, char **argv)
 {
 	t_stacks	stacks;

@@ -32,7 +32,7 @@ typedef struct s_stacks
 ** Declarations from ps_stack_utils.c
 */
 char		**build_stack(int argc, char **argv);
-void		print_stack(char **stack, char stack_name);
+int			is_sorted(char **stack);
 void		free_stack(char **stack);
 void		error_exit(const char *msg);
 

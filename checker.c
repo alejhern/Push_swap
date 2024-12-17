@@ -38,27 +38,6 @@ static void	ft_call_function(char *line, t_stacks *stacks)
 		rrr(stacks, -1);
 }
 
-static int	is_sorted(char **stack)
-{
-	int		i;
-	long	prev;
-	long	current;
-
-	if (!stack || !stack[0])
-		return (1);
-	i = 0;
-	prev = ft_atoi(stack[0]);
-	while (stack[i])
-	{
-		current = ft_atoi(stack[i]);
-		if (current < prev)
-			return (0);
-		prev = current;
-		i++;
-	}
-	return (1);
-}
-
 static void	checker(t_stacks *stacks)
 {
 	char	*line;

@@ -62,20 +62,25 @@ char	**build_stack(int argc, char **argv)
 	return (stack);
 }
 
-void	print_stack(char **stack, char letter)
+int	is_sorted(char **stack)
 {
-	unsigned int	index;
+	int		i;
+	long	prev;
+	long	current;
 
-	if (!stack)
-		return ;
-	index = 0;
-	ft_printf("--- STACK %c ---\n", letter);
-	while (stack[index])
+	if (!stack || !stack[0])
+		return (1);
+	i = 0;
+	prev = ft_atoi(stack[0]);
+	while (stack[i])
 	{
-		ft_printf("Stack_%c[%03d]:%20s\n", ft_tolower(letter), index,
-			stack[index]);
-		index++;
+		current = ft_atoi(stack[i]);
+		if (current < prev)
+			return (0);
+		prev = current;
+		i++;
 	}
+	return (1);
 }
 
 void	free_stack(char **stack)
