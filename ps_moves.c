@@ -50,21 +50,15 @@ int	rotate_reverse(char **stack, int size)
 
 int	push(char ***stack1, char ***stack2, int size_1, int size_2)
 {
-	size_t	len_st1;
-	size_t	len_st2;
-
-	len_st2 = size_2;
-	if (!stack1 || !len_st2)
+	if (!size_2)
 		return (0);
-	len_st1 = size_1;
-	*stack1 = realloc(*stack1, (len_st1 + 2) * sizeof(char *));
+	*stack1 = realloc(*stack1, (size_1 + 2) * sizeof(char *));
 	if (!*stack1)
 		return (-1);
-	(*stack1)[len_st1] = (*stack2)[0];
-	(*stack1)[len_st1 + 1] = NULL;
-	rotate_reverse(*stack1, len_st1 + 1);
-	rotate(*stack2, len_st2);
-	len_st2 = size_2;
-	(*stack2)[len_st2 - 1] = NULL;
+	(*stack1)[size_1] = (*stack2)[0];
+	(*stack1)[size_1 + 1] = NULL;
+	rotate_reverse(*stack1, size_1 + 1);
+	rotate(*stack2, size_2);
+	(*stack2)[size_2 - 1] = NULL;
 	return (1);
 }
