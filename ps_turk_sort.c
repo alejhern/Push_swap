@@ -36,11 +36,9 @@ void	split_to_chunks(t_stacks *stacks, long min, long max)
 	{
 		pos = find_closest_in_range(stacks->stack_a, stacks->size_a, min, max);
 		if (pos <= stacks->size_a / 2)
-			while (pos-- > 0)
-				ra(stacks, 1);
+			rotate_to_minimize_cost(stacks, pos, 0);
 		else
-			while (pos++ < stacks->size_a)
-				rra(stacks, 1);
+			rotate_to_minimize_cost(stacks, pos - stacks->size_a, 0);
 		pb(stacks, 1);
 		if (ft_atoi(stacks->stack_b[0]) <= (min + max) / 2)
 			rb(stacks, 1);
@@ -92,7 +90,7 @@ void	turk_sort(t_stacks *stacks)
 	if (stacks->size_a <= 100)
 		stacks->chunks = 5;
 	else if (stacks->size_a <= 500)
-		stacks->chunks = 10;
+		stacks->chunks = 8;
 	else
 		stacks->chunks = stacks->size_a / 35;
 	stacks->group_size = (stacks->size_a + stacks->chunks - 1) / stacks->chunks;
