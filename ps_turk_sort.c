@@ -28,7 +28,7 @@ static void	rotate_to_minimize_cost(t_stacks *stacks, int cost_a, int cost_b)
 		rrb(stacks, 1);
 }
 
-void	split_to_chunks(t_stacks *stacks, long min, long max)
+static void	split_to_chunks(t_stacks *stacks, long min, long max)
 {
 	int	pos;
 
