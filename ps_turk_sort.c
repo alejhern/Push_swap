@@ -50,7 +50,6 @@ static void	push_chunks_to_b(t_stacks *stacks, long *values, int total_size)
 	int	i;
 	int	start;
 	int	end;
-
 	i = 0;
 	while (i < stacks->chunks)
 	{
@@ -74,7 +73,10 @@ static void	push_all_to_a(t_stacks *stacks)
 		pos_b = find_position(stacks->stack_b, stacks->size_b,
 				find_max_value(stacks->stack_b), 0);
 		cost_b = calculate_cost(stacks->size_b, pos_b);
-		rotate_to_minimize_cost(stacks, 0, cost_b);
+		if (pos_b == 1)
+			sb(stacks, 1);
+		else
+			rotate_to_minimize_cost(stacks, 0, cost_b);
 		pa(stacks, 1);
 	}
 }
@@ -98,4 +100,8 @@ void	turk_sort(t_stacks *stacks)
 	push_chunks_to_b(stacks, values, stacks->size_a);
 	push_all_to_a(stacks);
 	free(values);
+	if (is_sorted(stacks->stack_a) && stacks->size_b == 0)
+		ft_printf("OK\n");
+	else
+		ft_printf("KO\n");
 }
