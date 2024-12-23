@@ -12,8 +12,7 @@
 
 *.o
 *.d
-ps_test
-libft/libft.a
-push_swa
 libft/libft.a
 push_swap
+checker
+.vscode
