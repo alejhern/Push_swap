@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
+/*
 void	print_stack(char **stack, char letter)
 {
 	unsigned int	index;
@@ -27,7 +27,7 @@ void	print_stack(char **stack, char letter)
 		index++;
 	}
 }
-
+*/
 int	main(int argc, char **argv)
 {
 	t_stacks	stacks;
@@ -39,10 +39,8 @@ int	main(int argc, char **argv)
 	stacks.size_a = argc - 1;
 	stacks.size_b = 0;
 	stacks.move_count = 0;
-	// print_stack(stacks.stack_a, 'A');
 	turk_sort(&stacks);
 	ft_printf("\nTotal movements: %d\n", stacks.move_count);
-	// print_stack(stacks.stack_a, 'A');
 	free_stack(stacks.stack_a);
 	free_stack(stacks.stack_b);
 	return (0);

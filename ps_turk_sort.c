@@ -50,6 +50,7 @@ static void	push_chunks_to_b(t_stacks *stacks, long *values, int total_size)
 	int	i;
 	int	start;
 	int	end;
+
 	i = 0;
 	while (i < stacks->chunks)
 	{
