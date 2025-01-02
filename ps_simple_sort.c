@@ -73,6 +73,8 @@ static void	sort_four_to_five(t_stacks *stacks)
 
 void	simple_sort(t_stacks *stacks)
 {
+	if (is_sorted(stacks->stack_a))
+		return ;
 	if (stacks->size_a == 2)
 		sort_two(stacks);
 	else if (stacks->size_a == 3)
