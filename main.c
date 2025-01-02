@@ -40,7 +40,11 @@ int	main(int argc, char **argv)
 	stacks.size_b = 0;
 	stacks.move_count = 0;
 	turk_sort(&stacks);
-	ft_printf("\nTotal movements: %d\n", stacks.move_count);
+	if (is_sorted(stacks.stack_a) && stacks.size_b == 0)
+		ft_printf("OK\n");
+	else
+		ft_printf("KO\n");
+	ft_printf("Total movements: %d\n", stacks.move_count);
 	free_stack(stacks.stack_a);
 	free_stack(stacks.stack_b);
 	return (0);

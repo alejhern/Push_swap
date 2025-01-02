@@ -88,9 +88,9 @@ void	turk_sort(t_stacks *stacks)
 
 	if (is_sorted(stacks->stack_a))
 		return ;
-	if (stacks->size_a <= 5)
+	else if (stacks->size_a <= 5)
 		return (simple_sort(stacks));
-	if (stacks->size_a <= 100)
+	else if (stacks->size_a <= 100)
 		stacks->chunks = 5;
 	else if (stacks->size_a <= 500)
 		stacks->chunks = 8;
@@ -101,8 +101,4 @@ void	turk_sort(t_stacks *stacks)
 	push_chunks_to_b(stacks, values, stacks->size_a);
 	push_all_to_a(stacks);
 	free(values);
-	if (is_sorted(stacks->stack_a) && stacks->size_b == 0)
-		ft_printf("OK\n");
-	else
-		ft_printf("KO\n");
 }
