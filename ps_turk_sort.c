@@ -45,15 +45,14 @@ static void	split_to_chunks(t_stacks *stacks, long min, long max)
 	}
 }
 
-static void	push_chunks_to_b(t_stacks *stacks, long *values, int total_size,
-		int desfase)
+static void	push_chunks_to_b(t_stacks *stacks, long *values, int total_size)
 {
 	int	i;
 	int	start;
 	int	end;
 
 	i = 0;
-	while (i < stacks->chunks - desfase)
+	while (i < stacks->chunks - stacks->desfase)
 	{
 		start = i * stacks->group_size;
 		if ((i + 1) * stacks->group_size < total_size)
@@ -85,28 +84,14 @@ static void	push_all_to_a(t_stacks *stacks)
 
 void	turk_sort(t_stacks *stacks)
 {
-	int		desfase;
 	long	*values;
 
-	desfase = 0;
 	if (is_sorted(stacks->stack_a) || stacks->size_a <= 5)
 		return (simple_sort(stacks));
-	else if (stacks->size_a <= 100)
-		stacks->chunks = 5;
-	else if (stacks->size_a <= 200)
-	{
-		desfase = 2;
-		stacks->chunks = 4;
-	}
-	else
-	{
-		desfase = 4;
-		stacks->chunks = 6;
-	}
-	stacks->group_size = (stacks->size_a + stacks->chunks - 1) / stacks->chunks;
+	set_stacks_info(stacks);
 	values = get_sorted_values(stacks, stacks->size_a);
-	push_chunks_to_b(stacks, values, stacks->size_a, desfase);
-	if (desfase)
+	push_chunks_to_b(stacks, values, stacks->size_a);
+	if (stacks->desfase)
 		turk_sort(stacks);
 	push_all_to_a(stacks);
 	free(values);

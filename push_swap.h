@@ -23,9 +23,9 @@ typedef struct s_stacks
 	int		size_a;
 	int		size_b;
 	int		move_count;
-	int		*sorted_values;
 	int		chunks;
 	int		group_size;
+	int		desfase;
 }			t_stacks;
 
 /*
@@ -42,6 +42,7 @@ void		error_exit(const char *msg);
 int			calculate_cost(int size, int pos);
 long		*get_sorted_values(t_stacks *stacks, int total_size);
 int			has_values_in_range(char **stack, int size, long min, long max);
+void		set_stacks_info(t_stacks *stacks);
 
 /*
 ** Declarations from ps_sort_utils.c
