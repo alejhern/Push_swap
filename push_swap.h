@@ -49,7 +49,6 @@ int			has_values_in_range(char **stack, int size, long min, long max);
 long		find_max_value(char **stack);
 long		find_min_value(char **stack);
 int			find_position(char **stack, int size, long value, int mode);
-long		find_best_value_in_range(t_stacks *stacks, long start, long end);
 int			find_closest_in_range(char **stack, int size, long min, long max);
 
 /*

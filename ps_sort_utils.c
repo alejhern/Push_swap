@@ -75,35 +75,6 @@ int	find_position(char **stack, int size, long value, int mode)
 	}
 }
 
-long	find_best_value_in_range(t_stacks *stacks, long start, long end)
-{
-	long	best_value;
-	int		min_cost;
-	int		i;
-	int		cost;
-
-	best_value = -1;
-	min_cost = INT_MAX;
-	i = -1;
-	while (++i < stacks->size_a)
-	{
-		if (ft_atoi(stacks->stack_a[i]) >= start
-			&& ft_atoi(stacks->stack_a[i]) <= end)
-		{
-			cost = abs(calculate_cost(stacks->size_a, i))
-				+ abs(calculate_cost(stacks->size_b,
-						find_position(stacks->stack_b, stacks->size_b,
-							ft_atoi(stacks->stack_a[i]), 1)));
-			if (cost < min_cost)
-			{
-				min_cost = cost;
-				best_value = ft_atoi(stacks->stack_a[i]);
-			}
-		}
-	}
-	return (best_value);
-}
-
 int	find_closest_in_range(char **stack, int size, long min, long max)
 {
 	int		i;
