@@ -18,8 +18,6 @@ static void	check_stack(char **stack)
 	int		j;
 	long	current;
 
-	if (!stack || !stack[0])
-		return ;
 	i = 0;
 	while (stack[i])
 	{
