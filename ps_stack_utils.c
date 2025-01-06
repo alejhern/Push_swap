@@ -23,6 +23,11 @@ static void	check_stack(char **stack)
 	i = 0;
 	while (stack[i])
 	{
+		if (!ft_isnum(stack[i]))
+		{
+			free_stack(stack);
+			error_exit("Error: Invalid number in the stack.\n");
+		}
 		current = ft_atoi(stack[i]);
 		j = i + 1;
 		while (stack[j])

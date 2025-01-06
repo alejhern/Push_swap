@@ -31,7 +31,7 @@ typedef struct s_list
 }	t_list;
 
 // Declarations from ft_atoi.c
-long long		ft_atoi(const char *str);
+long			ft_atoi(const char *str);
 // Declarations from ft_bzero.c
 void			ft_bzero(void *s, size_t len);
 // Declarations from ft_calloc.c
@@ -48,6 +48,8 @@ int				ft_isalpha(int c);
 int				ft_isascii(int c);
 // Declarations from ft_isdigit.c
 int				ft_isdigit(int c);
+// Declarations from ft_isnum.c
+int				ft_isnum(char *num);
 // Declarations from ft_isprint.c
 int				ft_isprint(int c);
 // Declarations from ft_itoa.c
