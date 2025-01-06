@@ -85,10 +85,18 @@ int	has_values_in_range(char **stack, int size, long min, long max)
 void	set_stacks_info(t_stacks *stacks)
 {
 	stacks->desfase = 0;
-	if (stacks->size_a <= 85)
+	if (stacks->size_a <= 50)
+		stacks->chunks = 2;
+	else if (stacks->size_a <= 85)
+	{
+		stacks->desfase = 1;
 		stacks->chunks = 3;
+	}
 	else if (stacks->size_a <= 100)
+	{
+		stacks->desfase = 1;
 		stacks->chunks = 5;
+	}
 	else if (stacks->size_a <= 200)
 	{
 		stacks->desfase = 2;
