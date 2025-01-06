@@ -49,7 +49,7 @@ void		set_stacks_info(t_stacks *stacks);
 */
 long		find_max_value(char **stack);
 long		find_min_value(char **stack);
-int			find_position(char **stack, int size, long value, int mode);
+int			find_position(char **stack, int size, long value);
 int			find_closest_in_range(char **stack, int size, long min, long max);
 
 /*

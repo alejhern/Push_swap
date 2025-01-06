@@ -72,7 +72,7 @@ static void	push_all_to_a(t_stacks *stacks)
 	while (stacks->size_b > 0)
 	{
 		pos_b = find_position(stacks->stack_b, stacks->size_b,
-				find_max_value(stacks->stack_b), 0);
+				find_max_value(stacks->stack_b));
 		cost_b = calculate_cost(stacks->size_b, pos_b);
 		if (pos_b == 1)
 			sb(stacks, 1);

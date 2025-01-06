@@ -52,27 +52,18 @@ long	find_min_value(char **stack)
 	return (min);
 }
 
-int	find_position(char **stack, int size, long value, int mode)
+int	find_position(char **stack, int size, long value)
 {
 	int	i;
 
 	i = 0;
-	if (mode == 0)
+	while (i < size)
 	{
-		while (i < size)
-		{
-			if (ft_atoi(stack[i]) == value)
-				return (i);
-			i++;
-		}
-		return (-1);
+		if (ft_atoi(stack[i]) == value)
+			return (i);
+		i++;
 	}
-	else
-	{
-		while (i < size && ft_atoi(stack[i]) >= value)
-			i++;
-		return (i);
-	}
+	return (-1);
 }
 
 int	find_closest_in_range(char **stack, int size, long min, long max)
