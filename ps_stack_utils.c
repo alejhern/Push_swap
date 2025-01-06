@@ -48,7 +48,7 @@ char	**build_stack(int argc, char **argv)
 
 	stack = (char **)malloc(argc * sizeof(char *));
 	if (!stack)
-		error_exit("Error: Failed to allocate memory with malloc.\n");
+		error_exit("Error\n");
 	index = 0;
 	while (index < argc - 1)
 	{
@@ -56,7 +56,7 @@ char	**build_stack(int argc, char **argv)
 		if (!stack[index])
 		{
 			free_stack(stack);
-			error_exit("Error: Failed to allocate memory with malloc.\n");
+			error_exit("Error\n");
 		}
 		index++;
 	}

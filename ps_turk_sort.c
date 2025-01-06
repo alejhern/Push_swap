@@ -35,10 +35,10 @@ static void	split_to_chunks(t_stacks *stacks, long min, long max)
 	int		cost_b;
 	long	limits;
 
+	limits = (min + max) / 2;
 	while (has_values_in_range(stacks->stack_a, min, max))
 	{
 		cost_b = 0;
-		limits = (min + max) / 2;
 		if (stacks->size_b > 1 && ft_atoi(stacks->stack_b[0]) <= limits)
 			cost_b = 1;
 		pos = find_closest_in_range(stacks->stack_a, stacks->size_a, min, max);

@@ -12,40 +12,16 @@
 
 #include "push_swap.h"
 
-void	print_stack(char **stack, char letter)
-{
-	unsigned int	index;
-
-	if (!stack)
-		return ;
-	index = 0;
-	ft_printf("--- STACK %c ---\n", letter);
-	while (stack[index])
-	{
-		ft_printf("Stack_%c[%03d]:%20s\n", ft_tolower(letter), index,
-			stack[index]);
-		index++;
-	}
-}
-
 int	main(int argc, char **argv)
 {
 	t_stacks	stacks;
 
-	if (argc < 3)
-		error_exit("You have to pass more than 2 arguments.");
 	stacks.stack_a = build_stack(argc, argv);
 	stacks.stack_b = NULL;
 	stacks.size_a = argc - 1;
 	stacks.size_b = 0;
 	stacks.move_count = 0;
 	turk_sort(&stacks);
-	if (is_sorted(stacks.stack_a) && stacks.size_b == 0)
-		ft_printf("OK\n");
-	else
-		ft_printf("KO\n");
-	ft_printf("Total movements: %d\n", stacks.move_count);
-	// print_stack(stacks.stack_a, 'A');
 	free_stack(stacks.stack_a);
 	free_stack(stacks.stack_b);
 	return (0);

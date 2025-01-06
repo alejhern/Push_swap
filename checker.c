@@ -36,6 +36,8 @@ static void	ft_call_function(char *line, t_stacks *stacks)
 		rrb(stacks, -1);
 	if (ft_memcmp(line, "rrr\n", 4) == 0)
 		rrr(stacks, -1);
+	else
+		return (free_stack(stacks->stack_a), error_exit("Error\n"));
 }
 
 static void	checker(t_stacks *stacks)
@@ -59,8 +61,6 @@ int	main(int argc, char **argv)
 {
 	t_stacks	stacks;
 
-	if (argc < 3)
-		error_exit("You have to pass more than 2 arguments.");
 	stacks.stack_a = build_stack(argc, argv);
 	stacks.stack_b = NULL;
 	stacks.size_a = argc - 1;

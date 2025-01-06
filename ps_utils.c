@@ -69,17 +69,19 @@ long	*get_sorted_values(t_stacks *stacks, int total_size)
 int	has_values_in_range(char **stack, long min, long max)
 {
 	int		i;
+	int		count;
 	long	value;
 
 	i = 0;
+	count = 0;
 	while (stack[i])
 	{
 		value = ft_atoi(stack[i]);
 		if (value >= min && value <= max)
-			return (1);
+			count++;
 		i++;
 	}
-	return (0);
+	return (count);
 }
 
 void	set_stacks_info(t_stacks *stacks)
