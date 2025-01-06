@@ -30,17 +30,21 @@ static void	rotate_to_minimize_cost(t_stacks *stacks, int cost_a, int cost_b)
 
 static void	split_to_chunks(t_stacks *stacks, long min, long max)
 {
-	int	pos;
-	int	cost;
+	int		pos;
+	int		cost;
+	int		cost_b;
+	long	limits;
 
-	while (has_values_in_range(stacks->stack_a, stacks->size_a, min, max))
+	while (has_values_in_range(stacks->stack_a, min, max))
 	{
+		cost_b = 0;
+		limits = (min + max) / 2;
+		if (stacks->size_b > 1 && ft_atoi(stacks->stack_b[0]) <= limits)
+			cost_b = 1;
 		pos = find_closest_in_range(stacks->stack_a, stacks->size_a, min, max);
 		cost = calculate_cost(stacks->size_a, pos);
-		rotate_to_minimize_cost(stacks, cost, 0);
+		rotate_to_minimize_cost(stacks, cost, cost_b);
 		pb(stacks, 1);
-		if (ft_atoi(stacks->stack_b[0]) <= (min + max) / 2)
-			rb(stacks, 1);
 	}
 }
 

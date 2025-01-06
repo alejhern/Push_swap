@@ -40,7 +40,7 @@ void		error_exit(const char *msg);
 */
 int			calculate_cost(int size, int pos);
 long		*get_sorted_values(t_stacks *stacks, int total_size);
-int			has_values_in_range(char **stack, int size, long min, long max);
+int			has_values_in_range(char **stack, long min, long max);
 void		set_stacks_info(t_stacks *stacks);
 
 /*
