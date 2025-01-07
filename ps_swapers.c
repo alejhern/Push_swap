@@ -6,7 +6,7 @@
 /*   By: amhernandez <alejhern@student.42.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 11:09:05 by amhernandez       #+#    #+#             */
-/*   Updated: 2024/11/21 20:23:25 by alejhern         ###   ########.fr       */
+/*   Updated: 2025/01/07 23:45:07 by alejhern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,12 @@ void	sb(t_stacks *stacks, int fd)
 
 void	ss(t_stacks *stacks, int fd)
 {
-	if (swap(stacks->stack_a, stacks->size_a) || swap(stacks->stack_b,
-			stacks->size_b))
+	int	moved_a;
+	int	moved_b;
+
+	moved_a = swap(stacks->stack_a, stacks->size_a);
+	moved_b = swap(stacks->stack_b, stacks->size_b);
+	if (moved_a || moved_a)
 	{
 		stacks->move_count++;
 		ft_putendl_fd("ss", fd);

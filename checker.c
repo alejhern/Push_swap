@@ -6,7 +6,7 @@
 /*   By: amhernandez <alejhern@student.42.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 16:00:19 by amhernandez       #+#    #+#             */
-/*   Updated: 2024/12/16 16:00:22 by amhernandez      ###   ########.fr       */
+/*   Updated: 2025/01/07 23:56:59 by alejhern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,28 +16,29 @@ static void	ft_call_function(char *line, t_stacks *stacks)
 {
 	if (ft_memcmp(line, "sa\n", 3) == 0)
 		sa(stacks, -1);
-	if (ft_memcmp(line, "sb\n", 3) == 0)
+	else if (ft_memcmp(line, "sb\n", 3) == 0)
 		sb(stacks, -1);
-	if (ft_memcmp(line, "ss\n", 3) == 0)
+	else if (ft_memcmp(line, "ss\n", 3) == 0)
 		ss(stacks, -1);
-	if (ft_memcmp(line, "pa\n", 3) == 0)
+	else if (ft_memcmp(line, "pa\n", 3) == 0)
 		pa(stacks, -1);
-	if (ft_memcmp(line, "pb\n", 3) == 0)
+	else if (ft_memcmp(line, "pb\n", 3) == 0)
 		pb(stacks, -1);
-	if (ft_memcmp(line, "ra\n", 3) == 0)
+	else if (ft_memcmp(line, "ra\n", 3) == 0)
 		ra(stacks, -1);
-	if (ft_memcmp(line, "rb\n", 3) == 0)
+	else if (ft_memcmp(line, "rb\n", 3) == 0)
 		rb(stacks, -1);
-	if (ft_memcmp(line, "rr\n", 3) == 0)
+	else if (ft_memcmp(line, "rr\n", 3) == 0)
 		rr(stacks, -1);
-	if (ft_memcmp(line, "rra\n", 4) == 0)
+	else if (ft_memcmp(line, "rra\n", 4) == 0)
 		rra(stacks, -1);
-	if (ft_memcmp(line, "rrb\n", 4) == 0)
+	else if (ft_memcmp(line, "rrb\n", 4) == 0)
 		rrb(stacks, -1);
-	if (ft_memcmp(line, "rrr\n", 4) == 0)
+	else if (ft_memcmp(line, "rrr\n", 4) == 0)
 		rrr(stacks, -1);
 	else
-		return (free_stack(stacks->stack_a), error_exit("Error"));
+		return (free_stack(stacks->stack_a), free_stack(stacks->stack_b),
+			free(line), error_exit("Error"));
 }
 
 static void	checker(t_stacks *stacks)
