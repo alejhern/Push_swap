@@ -6,7 +6,7 @@
 #    By: alejhern <alejhern@student.42barcelona.co  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/09 21:50:18 by alejhern          #+#    #+#              #
-#    Updated: 2024/12/09 22:17:54 by alejhern         ###   ########.fr        #
+#    Updated: 2025/01/08 00:10:02 by alejhern         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,5 +80,7 @@ re: fclean all
 #                                BONUS                                         #
 # **************************************************************************** #
 
-bonus: $(LIBFT) $(OBJ_B)
+bonus: $(CHECKER)
+
+$(CHECKER): $(OBJ_B) $(LIBFT)
 	$(CC) $(CFLAGS) $(OBJ_B) -L$(LIB_DIR) -lft -o $(CHECKER)
