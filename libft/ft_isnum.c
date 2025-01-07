@@ -18,6 +18,8 @@ int	ft_isnum(char *num)
 		num++;
 	if (*num == '-' || *num == '+')
 		num++;
+	if (!*num)
+		return (0);
 	while (*num)
 	{
 		if (!ft_isdigit(*num))

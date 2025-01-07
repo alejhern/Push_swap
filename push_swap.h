@@ -33,7 +33,7 @@ typedef struct s_stacks
 char		**build_stack(int argc, char **argv);
 int			is_sorted(char **stack);
 void		free_stack(char **stack);
-void		error_exit(const char *msg);
+void		error_exit(char *msg);
 
 /*
 ** Declarations from ps_utils.c

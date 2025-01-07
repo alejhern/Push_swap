@@ -29,7 +29,7 @@ void	pa(t_stacks *stacks, int fd)
 	{
 		free_stack(stacks->stack_a);
 		free_stack(stacks->stack_b);
-		error_exit("Error: Failed to reallocate memory with realloc.\n");
+		error_exit("Error");
 	}
 }
 
@@ -50,6 +50,6 @@ void	pb(t_stacks *stacks, int fd)
 	{
 		free_stack(stacks->stack_a);
 		free_stack(stacks->stack_b);
-		error_exit("Error: Failed to reallocate memory with realloc.\n");
+		error_exit("Error");
 	}
 }

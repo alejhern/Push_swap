@@ -18,26 +18,24 @@ static void	check_stack(char **stack)
 	int		j;
 	long	current;
 
-	i = 0;
-	while (stack[i])
+	i = -1;
+	while (stack[++i])
 	{
-		if (!ft_isnum(stack[i]))
+		current = ft_atoi(stack[i]);
+		if (!ft_isnum(stack[i]) || current > INT_MAX || current < INT_MIN)
 		{
 			free_stack(stack);
-			error_exit("Error: Invalid number in the stack.\n");
+			error_exit("Error");
 		}
-		current = ft_atoi(stack[i]);
-		j = i + 1;
-		while (stack[j])
+		j = i;
+		while (stack[++j])
 		{
 			if (current == ft_atoi(stack[j]))
 			{
 				free_stack(stack);
-				error_exit("Error: Duplicated values in the stack.\n");
+				error_exit("Error");
 			}
-			j++;
 		}
-		i++;
 	}
 }
 
@@ -48,15 +46,15 @@ char	**build_stack(int argc, char **argv)
 
 	stack = (char **)malloc(argc * sizeof(char *));
 	if (!stack)
-		error_exit("Error\n");
+		error_exit("Error");
 	index = 0;
 	while (index < argc - 1)
 	{
 		stack[index] = ft_strdup(argv[index + 1]);
-		if (!stack[index])
+		if (!stack[index] || !argv[index + 1][0])
 		{
 			free_stack(stack);
-			error_exit("Error\n");
+			error_exit("Error");
 		}
 		index++;
 	}
@@ -99,8 +97,8 @@ void	free_stack(char **stack)
 	}
 }
 
-void	error_exit(const char *msg)
+void	error_exit(char *msg)
 {
-	ft_printf("%s", msg);
+	ft_putendl_fd(msg, 2);
 	exit(EXIT_FAILURE);
 }

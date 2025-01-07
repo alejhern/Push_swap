@@ -37,7 +37,7 @@ static void	ft_call_function(char *line, t_stacks *stacks)
 	if (ft_memcmp(line, "rrr\n", 4) == 0)
 		rrr(stacks, -1);
 	else
-		return (free_stack(stacks->stack_a), error_exit("Error\n"));
+		return (free_stack(stacks->stack_a), error_exit("Error"));
 }
 
 static void	checker(t_stacks *stacks)

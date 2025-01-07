@@ -53,17 +53,19 @@ static void	sort_four_to_five(t_stacks *stacks)
 	while (stacks->size_a != 3)
 	{
 		min = find_min_value(stacks->stack_a);
-		i = 0;
-		while (i < stacks->size_a)
+		i = -1;
+		while (++i < stacks->size_a)
 		{
 			if (ft_atoi(stacks->stack_a[0]) == min)
 			{
 				pb(stacks, 1);
 				break ;
 			}
-			else
+			else if (calculate_cost(stacks->size_a,
+					find_position(stacks->stack_a, stacks->size_a, min)) > 0)
 				ra(stacks, 1);
-			i++;
+			else
+				rra(stacks, 1);
 		}
 	}
 	sort_three(stacks);
