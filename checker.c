@@ -61,9 +61,9 @@ static void	checker(t_stacks *stacks)
 		line = get_next_line(0);
 	}
 	if (is_sorted(stacks->stack_a) && stacks->size_b == 0)
-		ft_putstr_fd("OK\n", 1);
+		ft_putendl_fd("OK", 1);
 	else
-		ft_putstr_fd("KO\n", 1);
+		ft_putendl_fd("KO", 1);
 }
 
 int	main(int argc, char **argv)
