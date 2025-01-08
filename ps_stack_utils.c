@@ -24,16 +24,16 @@ static void	check_stack(char **stack)
 		current = ft_atoi(stack[i]);
 		if (!ft_isnum(stack[i]) || current > INT_MAX || current < INT_MIN)
 		{
-			free_stack(stack);
-			error_exit("Error");
+			ft_free_array((void ***)&stack);
+			ft_error_exit("Error");
 		}
 		j = i;
 		while (stack[++j])
 		{
 			if (current == ft_atoi(stack[j]))
 			{
-				free_stack(stack);
-				error_exit("Error");
+				ft_free_array((void ***)&stack);
+				ft_error_exit("Error");
 			}
 		}
 	}
@@ -46,15 +46,15 @@ char	**build_stack(int argc, char **argv)
 
 	stack = (char **)malloc(argc * sizeof(char *));
 	if (!stack)
-		error_exit("Error");
+		ft_error_exit("Error");
 	index = 0;
 	while (index < argc - 1)
 	{
 		stack[index] = ft_strdup(argv[index + 1]);
 		if (!stack[index] || !argv[index + 1][0])
 		{
-			free_stack(stack);
-			error_exit("Error");
+			ft_free_array((void ***)&stack);
+			ft_error_exit("Error");
 		}
 		index++;
 	}
@@ -84,21 +84,30 @@ int	is_sorted(char **stack)
 	return (1);
 }
 
-void	free_stack(char **stack)
+void	set_stacks_info(t_stacks *stacks)
 {
-	size_t	index;
-
-	if (stack)
+	stacks->desfase = 0;
+	if (stacks->size_a <= 50)
+		stacks->chunks = 2;
+	else if (stacks->size_a <= 85)
 	{
-		index = 0;
-		while (stack[index])
-			free(stack[index++]);
-		free(stack);
+		stacks->desfase = 1;
+		stacks->chunks = 3;
 	}
-}
-
-void	error_exit(char *msg)
-{
-	ft_putendl_fd(msg, 2);
-	exit(EXIT_FAILURE);
+	else if (stacks->size_a <= 100)
+	{
+		stacks->desfase = 1;
+		stacks->chunks = 5;
+	}
+	else if (stacks->size_a <= 200)
+	{
+		stacks->desfase = 2;
+		stacks->chunks = 4;
+	}
+	else
+	{
+		stacks->desfase = 4;
+		stacks->chunks = 6;
+	}
+	stacks->group_size = (stacks->size_a + stacks->chunks - 1) / stacks->chunks;
 }

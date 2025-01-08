@@ -83,31 +83,3 @@ int	has_values_in_range(char **stack, long min, long max)
 	}
 	return (count);
 }
-
-void	set_stacks_info(t_stacks *stacks)
-{
-	stacks->desfase = 0;
-	if (stacks->size_a <= 50)
-		stacks->chunks = 2;
-	else if (stacks->size_a <= 85)
-	{
-		stacks->desfase = 1;
-		stacks->chunks = 3;
-	}
-	else if (stacks->size_a <= 100)
-	{
-		stacks->desfase = 1;
-		stacks->chunks = 5;
-	}
-	else if (stacks->size_a <= 200)
-	{
-		stacks->desfase = 2;
-		stacks->chunks = 4;
-	}
-	else
-	{
-		stacks->desfase = 4;
-		stacks->chunks = 6;
-	}
-	stacks->group_size = (stacks->size_a + stacks->chunks - 1) / stacks->chunks;
-}

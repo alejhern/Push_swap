@@ -22,7 +22,7 @@ int	main(int argc, char **argv)
 	stacks.size_b = 0;
 	stacks.move_count = 0;
 	turk_sort(&stacks);
-	free_stack(stacks.stack_a);
-	free_stack(stacks.stack_b);
+	ft_free_array((void ***)&stacks.stack_a);
+	ft_free_array((void ***)&stacks.stack_b);
 	return (0);
 }

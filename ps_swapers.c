@@ -37,7 +37,7 @@ void	ss(t_stacks *stacks, int fd)
 
 	moved_a = swap(stacks->stack_a, stacks->size_a);
 	moved_b = swap(stacks->stack_b, stacks->size_b);
-	if (moved_a || moved_a)
+	if (moved_a || moved_b)
 	{
 		stacks->move_count++;
 		ft_putendl_fd("ss", fd);

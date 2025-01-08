@@ -27,9 +27,9 @@ void	pa(t_stacks *stacks, int fd)
 	}
 	else if (result == -1)
 	{
-		free_stack(stacks->stack_a);
-		free_stack(stacks->stack_b);
-		error_exit("Error");
+		ft_free_array((void ***)&stacks->stack_a);
+		ft_free_array((void ***)&stacks->stack_b);
+		ft_error_exit("Error");
 	}
 }
 
@@ -48,8 +48,8 @@ void	pb(t_stacks *stacks, int fd)
 	}
 	else if (result == -1)
 	{
-		free_stack(stacks->stack_a);
-		free_stack(stacks->stack_b);
-		error_exit("Error");
+		ft_free_array((void ***)&stacks->stack_a);
+		ft_free_array((void ***)&stacks->stack_b);
+		ft_error_exit("Error");
 	}
 }

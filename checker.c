@@ -12,6 +12,15 @@
 
 #include "push_swap.h"
 
+static void	free_exit(t_stacks *stacks, char *line)
+{
+	ft_free_array((void ***)&stacks->stack_a);
+	if (stacks->stack_b)
+		ft_free_array((void ***)&stacks->stack_b);
+	free(line);
+	ft_error_exit("Error");
+}
+
 static void	ft_call_function(char *line, t_stacks *stacks)
 {
 	if (ft_memcmp(line, "sa\n", 3) == 0)
@@ -37,8 +46,7 @@ static void	ft_call_function(char *line, t_stacks *stacks)
 	else if (ft_memcmp(line, "rrr\n", 4) == 0)
 		rrr(stacks, -1);
 	else
-		return (free_stack(stacks->stack_a), free_stack(stacks->stack_b),
-			free(line), error_exit("Error"));
+		return (free_exit(stacks, line));
 }
 
 static void	checker(t_stacks *stacks)
@@ -68,8 +76,8 @@ int	main(int argc, char **argv)
 	stacks.size_b = 0;
 	stacks.move_count = 0;
 	checker(&stacks);
-	free_stack(stacks.stack_a);
+	ft_free_array((void ***)&stacks.stack_a);
 	if (stacks.stack_b)
-		free_stack(stacks.stack_b);
+		ft_free_array((void ***)&stacks.stack_b);
 	return (0);
 }

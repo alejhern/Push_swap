@@ -32,8 +32,7 @@ typedef struct s_stacks
 */
 char		**build_stack(int argc, char **argv);
 int			is_sorted(char **stack);
-void		free_stack(char **stack);
-void		error_exit(char *msg);
+void		set_stacks_info(t_stacks *stacks);
 
 /*
 ** Declarations from ps_utils.c
@@ -41,7 +40,6 @@ void		error_exit(char *msg);
 int			calculate_cost(int size, int pos);
 long		*get_sorted_values(t_stacks *stacks, int total_size);
 int			has_values_in_range(char **stack, long min, long max);
-void		set_stacks_info(t_stacks *stacks);
 
 /*
 ** Declarations from ps_sort_utils.c
