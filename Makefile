@@ -73,7 +73,7 @@ clean:
 
 fclean: clean
 	@make -C $(LIB_DIR) fclean
-	rm -f $(NAME)
+	rm -f $(NAME) $(CHECKER)
 
 re: fclean all
 
