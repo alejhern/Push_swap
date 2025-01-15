@@ -12,7 +12,7 @@
 
 *.o
 *.d
-libft/libft.a
+libft
 push_swap
 checker
 .vscode
